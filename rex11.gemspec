@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('active_utils', '~> 1.0.5')
   gem.add_dependency('builder')
+  gem.add_dependency('xml-simple')
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
