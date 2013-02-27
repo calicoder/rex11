@@ -1,5 +1,4 @@
+require "active_support/all"
+require 'active_utils'
+require 'rex11/client'
 require "rex11/version"
-
-module Rex11
-  # Your code goes here...
-end
