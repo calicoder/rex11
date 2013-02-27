@@ -1,0 +1,31 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <StyleMasterProductAddResponse xmlns="http://rex11.com/webmethods/">
+      <StyleMasterProductAddResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>31</ErrorCode>
+            <Severity>ColorError</Severity>
+            <Message>COLOR[item 1] is not valid</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>43</ErrorCode>
+            <Severity>PriceError</Severity>
+            <Message>PRICE[item 1] is not valid</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>31</ErrorCode>
+            <Severity>ColorError</Severity>
+            <Message>COLOR[item 2] is not valid</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>31</ErrorCode>
+            <Severity>ColorError</Severity>
+            <Message>COLOR[item 4] is not valid</Message>
+          </Notification>
+        </Notifications>
+      </StyleMasterProductAddResult>
+    </StyleMasterProductAddResponse>
+  </soap:Body>
+</soap:Envelope>

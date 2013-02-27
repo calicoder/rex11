@@ -42,20 +42,28 @@ module Rex11
       parse_authenticate_response(commit(xml))
     end
 
-    def add_style(style, color, size, upc, price, description = nil)
+    def add_style(style, upc, size, price, color, description = nil)
       require_auth_token
       xml = Builder::XmlMarkup.new
       xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml.SOAP :Body do
           xml.StyleMasterProductAdd(:xmlns => "http://rex11.com/webmethods/") do |xml|
             xml.AuthenticationString(@auth_token)
-            xml.WebAddress(@url)
-            xml.UserName(@username)
-            xml.Password(@password)
+            xml.products do |xml|
+              xml.StyleMasterProduct do |xml|
+                xml.Style(style, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.UPC(upc, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Size(size, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Price(price, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Color(color, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Description(description, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+              end
+            end
           end
         end
       end
-      parse_authenticate_response(commit(xml))
+
+      parse_add_style_response(commit(xml))
     end
 
     private
@@ -71,6 +79,23 @@ module Rex11
       response = XmlSimple.xml_in(xml_response)
       @auth_token = response["content"]
       raise "Failed Authentication due invalid username, password, or endpoint" unless @auth_token
+    end
+
+    def parse_add_style_response(xml_response)
+      error_string = ""
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      notifications = response["Body"]["StyleMasterProductAddResponse"]["StyleMasterProductAddResult"]["Notifications"]["Notification"]
+      notifications.each do |notification|
+        if notification["ErrorCode"] != "0"
+          error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
+        end
+      end
+
+      if error_string.empty?
+        true
+      else
+        raise error_string
+      end
     end
   end
 end

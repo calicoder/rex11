@@ -26,6 +26,34 @@ describe Rex11::Client do
     end
   end
 
+  context "add_style" do
+    before do
+      @client.auth_token = "something"
+    end
+
+    it "should require_auth_token" do
+      @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
+      @client.should_receive(:require_auth_token)
+      @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color")
+    end
+
+    context "success" do
+      it "should return true" do
+        @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
+        @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color").should == true
+      end
+    end
+
+    context "error" do
+      it "should raise error" do
+        @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_error"))
+        lambda {
+          @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color")
+        }.should raise_error("Error 31: COLOR[item 1] is not valid. Error 43: PRICE[item 1] is not valid. Error 31: COLOR[item 2] is not valid. Error 31: COLOR[item 4] is not valid. ")
+      end
+    end
+  end
+
   context "require_auth_token" do
     it "should raise error if auth_token is not set" do
       lambda {

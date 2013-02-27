@@ -1,0 +1,16 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <StyleMasterProductAddResponse xmlns="http://rex11.com/webmethods/">
+      <StyleMasterProductAddResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>0</ErrorCode>
+            <Severity>Success</Severity>
+            <Message>Data saved successfully</Message>
+          </Notification>
+        </Notifications>
+      </StyleMasterProductAddResult>
+    </StyleMasterProductAddResponse>
+  </soap:Body>
+</soap:Envelope>
