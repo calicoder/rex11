@@ -1,0 +1,19 @@
+<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP:Body>
+    <StyleMasterProductAdd xmlns="http://rex11.com/webmethods/">
+      <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
+      <products>
+        <StyleMasterProduct>
+          <Style xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_style</Style>
+          <Description
+              xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_description</Description>
+          <Color xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_color</Color>
+          <Size xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_size</Size>
+          <UPC xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_upc</UPC>
+          <Price xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_price</Price>
+        </StyleMasterProduct>
+      </products>
+    </StyleMasterProductAdd>
+  </SOAP:Body>
+</SOAP:Envelope>

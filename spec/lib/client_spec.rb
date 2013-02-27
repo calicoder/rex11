@@ -26,30 +26,40 @@ describe Rex11::Client do
     end
   end
 
-  context "add_style" do
+  context "add_styles_for_item" do
     before do
-      @client.auth_token = "something"
+      @item = Rex11::Item.new("the_style", "the_upc", "the_size", "the_price", "the_color", "the_description")
+      @client.auth_token = "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
     end
 
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color")
+      @client.add_styles_for_item(@item)
     end
 
-    context "success" do
-      it "should return true" do
-        @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
-        @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color").should == true
+    context "request" do
+      it "should form correct request" do
+        @client.should_receive(:commit).with(squeeze_xml(xml_fixture("style_master_product_add_request"))).and_return(xml_fixture("style_master_product_add_response_success"))
+        @client.add_styles_for_item(@item)
       end
     end
 
-    context "error" do
-      it "should raise error" do
-        @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_error"))
-        lambda {
-          @client.add_style("the_style", "the_upc", "the_size", "the_price", "the_color")
-        }.should raise_error("Error 31: COLOR[item 1] is not valid. Error 43: PRICE[item 1] is not valid. Error 31: COLOR[item 2] is not valid. Error 31: COLOR[item 4] is not valid. ")
+    context "response" do
+      context "when success" do
+        it "should return true" do
+          @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
+          @client.add_styles_for_item(@item).should == true
+        end
+      end
+
+      context "when error" do
+        it "should raise error" do
+          @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_error"))
+          lambda {
+            @client.add_styles_for_item(@item)
+          }.should raise_error("Error 31: COLOR[item 1] is not valid. Error 43: PRICE[item 1] is not valid. Error 31: COLOR[item 2] is not valid. Error 31: COLOR[item 4] is not valid. ")
+        end
       end
     end
   end

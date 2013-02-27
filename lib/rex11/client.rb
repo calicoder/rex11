@@ -42,7 +42,7 @@ module Rex11
       parse_authenticate_response(commit(xml))
     end
 
-    def add_style(style, upc, size, price, color, description = nil)
+    def add_styles_for_item(item)
       require_auth_token
       xml = Builder::XmlMarkup.new
       xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
@@ -51,19 +51,18 @@ module Rex11
             xml.AuthenticationString(@auth_token)
             xml.products do |xml|
               xml.StyleMasterProduct do |xml|
-                xml.Style(style, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.UPC(upc, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Size(size, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Price(price, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Color(color, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Description(description, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Style(item.style, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Description(item.description, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Color(item.color, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Size(item.size, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.UPC(item.upc, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Price(item.price, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
               end
             end
           end
         end
       end
-
-      parse_add_style_response(commit(xml))
+      parse_add_style_response(commit(xml.target!))
     end
 
     private
