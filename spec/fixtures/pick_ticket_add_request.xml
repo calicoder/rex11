@@ -1,0 +1,51 @@
+<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP:Body>
+    <PickTicketAdd xmlns="http://rex11.com/webmethods/">
+      <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
+      <newPickTicket xmlns="http://rex11.com/swpublicapi/PickTicket.xsd">
+        <PickTicketNumber>23022012012557</PickTicketNumber>
+        <WareHouse>the_warehouse</WareHouse>
+        <PaymentTerms>NET</PaymentTerms>
+        <UseAccountUPS>1</UseAccountUPS>
+        <ShipViaAccountNumber>1AB345</ShipViaAccountNumber>
+        <ShipVia>UPS</ShipVia>
+        <ShipService>UPS GROUND - Commercial</ShipService>
+        <BillingOption>PREPAID</BillingOption>
+        <BillToAddress>
+          <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_first_name</FirstName>
+          <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_last_name</LastName>
+          <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_company_name</CompanyName>
+          <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_address1</Address1>
+          <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_address2</Address2>
+          <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_city</City>
+          <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_state</State>
+          <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_zip</Zip>
+          <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_country</Country>
+          <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_phone</Phone>
+          <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_bill_to_email</Email>
+        </BillToAddress>
+        <ShipToAddress>
+          <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_first_name</FirstName>
+          <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_last_name</LastName>
+          <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_company_name</CompanyName>
+          <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_address1</Address1>
+          <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_address2</Address2>
+          <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_city</City>
+          <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_state</State>
+          <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_zip</Zip>
+          <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_country</Country>
+          <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_phone</Phone>
+          <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_ship_to_email</Email>
+        </ShipToAddress>
+        <LineItem>
+          <UPC xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_upc1</UPC>
+          <Quantity xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">1</Quantity>
+        </LineItem>
+        <LineItem>
+          <UPC xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_upc2</UPC>
+          <Quantity xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">2</Quantity>
+        </LineItem>
+      </newPickTicket>
+    </PickTicketAdd>
+  </SOAP:Body>
+</SOAP:Envelope>

@@ -51,18 +51,74 @@ module Rex11
             xml.AuthenticationString(@auth_token)
             xml.products do |xml|
               xml.StyleMasterProduct do |xml|
-                xml.Style(item.style, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Description(item.description, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Color(item.color, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Size(item.size, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.UPC(item.upc, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Price(item.price, :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Style(item[:style], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Description(item[:description], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Color(item[:color], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Size(item[:size], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.UPC(item[:upc], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml.Price(item[:price], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
               end
             end
           end
         end
       end
       parse_add_style_response(commit(xml.target!))
+    end
+
+    def create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
+      require_auth_token
+      xml_request = Builder::XmlMarkup.new
+      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.SOAP :Body do
+          xml_request.PickTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.newPickTicket(:xmlns => "http://rex11.com/swpublicapi/PickTicket.xsd") do |xml_request|
+              xml_request.PickTicketNumber(pick_ticket_options[:pick_ticket_number])
+              xml_request.WareHouse(pick_ticket_options[:warehouse])
+              xml_request.PaymentTerms(pick_ticket_options[:payment_terms])
+              xml_request.UseAccountUPS(pick_ticket_options[:use_ups_account])
+              xml_request.ShipViaAccountNumber(pick_ticket_options[:ship_via_account_number])
+              xml_request.ShipVia(pick_ticket_options[:ship_via])
+              xml_request.ShipService(pick_ticket_options[:ship_service])
+              xml_request.BillingOption(pick_ticket_options[:billing_option])
+              xml_request.BillToAddress do |xml_request|
+                xml_request.FirstName(pick_ticket_options[:bill_to_address][:first_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.LastName(pick_ticket_options[:bill_to_address][:last_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.CompanyName(pick_ticket_options[:bill_to_address][:company_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address1(pick_ticket_options[:bill_to_address][:address1], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address2(pick_ticket_options[:bill_to_address][:address2], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.City(pick_ticket_options[:bill_to_address][:city], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.State(pick_ticket_options[:bill_to_address][:state], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Zip(pick_ticket_options[:bill_to_address][:zip], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Country(pick_ticket_options[:bill_to_address][:country], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Phone(pick_ticket_options[:bill_to_address][:phone], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Email(pick_ticket_options[:bill_to_address][:email], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+              end
+              xml_request.ShipToAddress do |xml_request|
+                xml_request.FirstName(ship_to_address[:first_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.LastName(ship_to_address[:last_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.CompanyName(ship_to_address[:company_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address1(ship_to_address[:address1], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address2(ship_to_address[:address2], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.City(ship_to_address[:city], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.State(ship_to_address[:state], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Zip(ship_to_address[:zip], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Country(ship_to_address[:country], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Phone(ship_to_address[:phone], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Email(ship_to_address[:email], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+              end
+
+              items.each do |item|
+                xml_request.LineItem do |xml_request|
+                  xml_request.UPC(item[:upc], :xmlns => "http://rex11.com/swpublicapi/PickTicketDetails.xsd")
+                  xml_request.Quantity(item[:quantity], :xmlns => "http://rex11.com/swpublicapi/PickTicketDetails.xsd")
+                end
+              end
+            end
+          end
+        end
+      end
+      parse_pick_ticket_add_response(commit(xml_request.target!))
     end
 
     private
@@ -76,8 +132,12 @@ module Rex11
 
     def parse_authenticate_response(xml_response)
       response = XmlSimple.xml_in(xml_response)
-      @auth_token = response["content"]
-      raise "Failed Authentication due invalid username, password, or endpoint" unless @auth_token
+
+      if @auth_token = response["content"]
+        true
+      else
+        raise "Failed Authentication due invalid username, password, or endpoint"
+      end
     end
 
     def parse_add_style_response(xml_response)
@@ -95,6 +155,24 @@ module Rex11
       else
         raise error_string
       end
+    end
+
+    def parse_pick_ticket_add_response(xml_response)
+      error_string = ""
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      notifications = response["Body"]["PickTicketAddResponse"]["PickTicketAddResult"]["Notifications"]["Notification"]
+      notifications.each do |notification|
+        if notification["ErrorCode"] != "0"
+          error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
+        end
+      end
+
+      if error_string.empty?
+        true
+      else
+        raise error_string
+      end
+
     end
   end
 end

@@ -1,0 +1,26 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <PickTicketAddResponse xmlns="http://rex11.com/webmethods/">
+      <PickTicketAddResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>56</ErrorCode>
+            <Severity>ShipViaError</Severity>
+            <Message>PickTicket/ShipVia is not valid</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>61</ErrorCode>
+            <Severity>ShipServiceError</Severity>
+            <Message>PickTicket/ShipService is not valid</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>10</ErrorCode>
+            <Severity>StateError</Severity>
+            <Message>State for ShipToAddress is required for USA</Message>
+          </Notification>
+        </Notifications>
+        <PickTicketId>0</PickTicketId>
+      </PickTicketAddResult>
+    </PickTicketAddResponse>
+  </soap:Body>
+</soap:Envelope>
