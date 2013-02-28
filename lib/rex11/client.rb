@@ -30,6 +30,7 @@ module Rex11
 
     def authenticate
       xml = Builder::XmlMarkup.new
+      xml.instruct!
       xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml.SOAP :Body do
           xml.AuthenticationTokenGet(:xmlns => "http://rex11.com/webmethods/") do |xml|
@@ -45,6 +46,7 @@ module Rex11
     def add_styles_for_item(item)
       require_auth_token
       xml = Builder::XmlMarkup.new
+      xml.instruct!
       xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml.SOAP :Body do
           xml.StyleMasterProductAdd(:xmlns => "http://rex11.com/webmethods/") do |xml|
@@ -68,6 +70,7 @@ module Rex11
     def create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
       xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml_request.SOAP :Body do
           xml_request.PickTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
@@ -124,6 +127,7 @@ module Rex11
     def pick_ticket_by_number(pick_ticket_number)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
       xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml_request.SOAP :Body do
           xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
