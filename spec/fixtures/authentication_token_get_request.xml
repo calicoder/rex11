@@ -1,0 +1,9 @@
+<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP:Body>
+    <AuthenticationTokenGet xmlns="http://rex11.com/webmethods/">
+      <WebAddress>http://sync.rex11.com/ws/v2staging/publicapiws.asmx</WebAddress>
+      <UserName>the_username</UserName>
+      <Password>the_password</Password>
+    </AuthenticationTokenGet>
+  </SOAP:Body>
+</SOAP:Envelope>

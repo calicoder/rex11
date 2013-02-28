@@ -39,7 +39,7 @@ module Rex11
           end
         end
       end
-      parse_authenticate_response(commit(xml))
+      parse_authenticate_response(commit(xml.target!))
     end
 
     def add_styles_for_item(item)

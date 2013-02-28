@@ -6,22 +6,31 @@ describe Rex11::Client do
   end
 
   context "authenticate" do
-    context "success" do
-      it "should set auth_token" do
-        @client.should_receive(:commit).and_return(xml_fixture("authentication_token_get_response_success"))
+    context "request" do
+      it "should form correct request" do
+        @client.should_receive(:commit).with(squeeze_xml(xml_fixture("authentication_token_get_request"))).and_return(xml_fixture("authentication_token_get_response_success"))
         @client.authenticate
-        @client.auth_token.should == "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
       end
     end
 
-    context "error" do
-      it "should raise error and not set auth_token" do
-        @client.should_receive(:commit).and_return(xml_fixture("authentication_token_get_response_error"))
-
-        lambda {
+    context "response" do
+      context "success" do
+        it "should set auth_token" do
+          @client.should_receive(:commit).and_return(xml_fixture("authentication_token_get_response_success"))
           @client.authenticate
-        }.should raise_error("Failed Authentication due invalid username, password, or endpoint")
-        @client.auth_token.should be_nil
+          @client.auth_token.should == "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
+        end
+      end
+
+      context "error" do
+        it "should raise error and not set auth_token" do
+          @client.should_receive(:commit).and_return(xml_fixture("authentication_token_get_response_error"))
+
+          lambda {
+            @client.authenticate
+          }.should raise_error("Failed Authentication due invalid username, password, or endpoint")
+          @client.auth_token.should be_nil
+        end
       end
     end
   end
