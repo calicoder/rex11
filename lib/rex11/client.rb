@@ -199,6 +199,7 @@ module Rex11
         pick_ticket_hash = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["PickTicket"]
         return_hash.merge!({
                                :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
+                               :pick_ticket_status  => pick_ticket_hash["ShipmentStatus"]["content"],
                                :tracking_number => pick_ticket_hash["TrackingNumber"]["content"],
                                :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
                            })

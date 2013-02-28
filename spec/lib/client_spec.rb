@@ -192,6 +192,7 @@ describe Rex11::Client do
           @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
           @client.pick_ticket_by_number(@pick_ticket_number).should == {
               :pick_ticket_number => "the_pick_ticket_number",
+              :pick_ticket_status => "the_pick_ticket_status",
               :tracking_number => "the_tracking_number",
               :shipping_charge => nil
           }
