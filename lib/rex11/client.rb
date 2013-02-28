@@ -121,6 +121,20 @@ module Rex11
       parse_pick_ticket_add_response(commit(xml_request.target!))
     end
 
+    def pick_ticket_by_number(pick_ticket_number)
+      require_auth_token
+      xml_request = Builder::XmlMarkup.new
+      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.SOAP :Body do
+          xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.ptbarcode(pick_ticket_number)
+          end
+        end
+      end
+      parse_get_pick_ticket_object_by_bar_code(commit(xml_request.target!))
+    end
+
     private
     def commit(request)
       ssl_post(@url, request)
@@ -172,7 +186,36 @@ module Rex11
       else
         raise error_string
       end
+    end
 
+    def parse_get_pick_ticket_object_by_bar_code(xml_response)
+      error_string = ""
+      return_hash = {}
+
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      notifications_block = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["Notifications"]
+      if notifications_block.empty?
+        #no errors
+        pick_ticket_hash = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["PickTicket"]
+        return_hash.merge!({
+                               :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
+                               :tracking_number => pick_ticket_hash["TrackingNumber"]["content"],
+                               :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
+                           })
+      else
+        #errors
+        notifications_block["Notification"].each do |notification|
+          if notification["ErrorCode"] != "0"
+            error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
+          end
+        end
+      end
+
+      if error_string.empty?
+        return_hash
+      else
+        raise error_string
+      end
     end
   end
 end

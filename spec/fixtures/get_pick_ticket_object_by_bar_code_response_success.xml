@@ -1,0 +1,104 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <GetPickTicketObjectByBarCodeResponse xmlns="http://rex11.com/webmethods/">
+      <GetPickTicketObjectByBarCodeResult>
+        <Notifications />
+        <PickTicket>
+          <PickTicketNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_pick_ticket_number</PickTicketNumber>
+          <WareHouse xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">BERGEN LOGISTICS NJ</WareHouse>
+          <OrderDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">12/14/2011</OrderDate>
+          <StartDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <CancelDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <ShipDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">12/16/2011</ShipDate>
+          <ActualShipDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <PaymentTerms xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">NET</PaymentTerms>
+          <CODAmount xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <DepartmentDescription xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <Store xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">321</Store>
+          <ShipVia xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">GALETRIANGLE</ShipVia>
+          <ShipViaAccountNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DVPercentage xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">100</DVPercentage>
+          <BillingOption xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">PREPAID</BillingOption>
+          <ShipService xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">GADQ</ShipService>
+          <SpecialInstructions xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <CustomerPONumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">102000000</CustomerPONumber>
+          <AuthorizationNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <OrderNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <TakenBy xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <DISTRIBUTIONCENTER xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">096</DISTRIBUTIONCENTER>
+          <DivisionCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <DivisionDescription xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <Department xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">123</Department>
+          <TRADINGPARTNER xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <UseAccountUPS xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">false</UseAccountUPS>
+          <VendorNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <BillToCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">Beverly Hills</BillToCode>
+          <BillToAddress xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Beverly Yoram</CompanyName>
+            <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">123 Rodeo Drive</Address1>
+            <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Beverly Hills</City>
+            <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">CA</State>
+            <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">90210</Zip>
+            <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">United States</Country>
+            <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+          </BillToAddress>
+          <ShipToCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <ShipToAddress xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Beverly Yoram</CompanyName>
+            <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">123 Rodeo Drive</Address1>
+            <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Beverly Hills</City>
+            <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">CA</State>
+            <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">90210</Zip>
+            <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">United States</Country>
+            <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">(222) 1111111</Phone>
+            <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+          </ShipToAddress>
+          <MarkForCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <MarkForAddress xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+            <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd" />
+          </MarkForAddress>
+          <LineItems xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <Season/>
+            <Style>a5492pin</Style>
+            <Description>3/4 SLV LANT</Description>
+            <Color>4PINK#2010/</Color>
+            <Size>S</Size>
+            <UPC>336440981</UPC>
+            <Quantity>1</Quantity>
+            <RequestedQuantity>1</RequestedQuantity>
+            <ShippedQuantity>1</ShippedQuantity>
+            <Comments />
+          </LineItems>
+          <Amount xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <Totalshipmentqty xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">1</Totalshipmentqty>
+          <ShipmentStatus xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">New - Pending Printing</ShipmentStatus>
+          <FreightCharge xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
+          <TrackingNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_tracking_number</TrackingNumber>
+        </PickTicket>
+      </GetPickTicketObjectByBarCodeResult>
+    </GetPickTicketObjectByBarCodeResponse>
+  </soap:Body>
+</soap:Envelope>

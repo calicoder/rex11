@@ -1,0 +1,15 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <GetPickTicketObjectByBarCodeResponse xmlns="http://rex11.com/webmethods/">
+      <GetPickTicketObjectByBarCodeResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>83</ErrorCode>
+            <Severity>BarCodeError</Severity>
+            <Message>BarCode doesn't exist</Message>
+          </Notification>
+        </Notifications>
+      </GetPickTicketObjectByBarCodeResult>
+    </GetPickTicketObjectByBarCodeResponse>
+  </soap:Body>
+</soap:Envelope>

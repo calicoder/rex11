@@ -1,0 +1,8 @@
+<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP:Body>
+    <GetPickTicketObjectByBarCode xmlns="http://rex11.com/webmethods/">
+      <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
+      <ptbarcode>the_pick_ticket_number</ptbarcode>
+    </GetPickTicketObjectByBarCode>
+  </SOAP:Body>
+</SOAP:Envelope>
