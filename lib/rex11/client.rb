@@ -45,26 +45,26 @@ module Rex11
 
     def add_styles_for_item(item)
       require_auth_token
-      xml = Builder::XmlMarkup.new
-      xml.instruct!
-      xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml.SOAP :Body do
-          xml.StyleMasterProductAdd(:xmlns => "http://rex11.com/webmethods/") do |xml|
-            xml.AuthenticationString(@auth_token)
-            xml.products do |xml|
-              xml.StyleMasterProduct do |xml|
-                xml.Style(item[:style], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Description(item[:description], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Color(item[:color], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Size(item[:size], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.UPC(item[:upc], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
-                xml.Price(item[:price], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+      xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
+      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.SOAP :Body do
+          xml_request.StyleMasterProductAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.products do |xml_request|
+              xml_request.StyleMasterProduct do |xml_request|
+                xml_request.Style(item[:style], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml_request.UPC(item[:upc], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml_request.Size(item[:size], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml_request.Color(item[:color], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml_request.Description(item[:description], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
+                xml_request.Price(item[:price], :xmlns => "http://rex11.com/swpublicapi/StyleMasterProduct.xsd")
               end
             end
           end
         end
       end
-      parse_add_style_response(commit(xml.target!))
+      parse_add_style_response(commit(xml_request.target!))
     end
 
     def create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
@@ -139,19 +139,48 @@ module Rex11
       parse_get_pick_ticket_object_by_bar_code(commit(xml_request.target!))
     end
 
-    def create_receiving_ticket_for_items(items, supplier, receiving_ticket_options)
+    def create_receiving_ticket_for_items(items, receiving_ticket_options)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
       xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml_request.SOAP :Body do
-          xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+          xml_request.ReceivingTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
-            xml_request.ptbarcode(pick_ticket_number)
+            xml_request.receivingTicket(:xmlns => "http://rex11.com/swpublicapi/ReceivingTicket.xsd") do |xml_request|
+              items.each do |item|
+                xml_request.Shipmentitemslist do |xml_request|
+                  xml_request.Style(item[:style], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.UPC(item[:upc], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.Size(item[:size], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.Color(item[:color], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.ProductDescription(item[:description], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.ExpectedQuantity(item[:quantity], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.Comments(item[:comments], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                  xml_request.ShipmentType(item[:shipment_type], :xmlns => "http://rex11.com/swpublicapi/ReceivingTicketItems.xsd")
+                end
+                xml_request.ShipmentTypelist(item[:shipment_type])
+              end
+              xml_request.Warehouse(receiving_ticket_options[:warehouse])
+              xml_request.Memo(receiving_ticket_options[:memo])
+              xml_request.Carrier(receiving_ticket_options[:carrier])
+              xml_request.SupplierDetails do |xml_request|
+                xml_request.CompanyName(receiving_ticket_options[:supplier][:company_name], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address1(receiving_ticket_options[:supplier][:address1], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Address2(receiving_ticket_options[:supplier][:address2], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.City(receiving_ticket_options[:supplier][:city], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.State(receiving_ticket_options[:supplier][:state], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Zip(receiving_ticket_options[:supplier][:zip], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Country(receiving_ticket_options[:supplier][:country], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Phone(receiving_ticket_options[:supplier][:phone], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+                xml_request.Email(receiving_ticket_options[:supplier][:email], :xmlns => "http://rex11.com/swpublicapi/CustomerOrder.xsd")
+              end
+
+            end
           end
         end
       end
-      parse_receiving_ticket_add_response(xml_request.target!)
+      parse_receiving_ticket_add_response(commit(xml_request.target!))
     end
 
     private
@@ -213,12 +242,13 @@ module Rex11
 
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
       notifications_block = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["Notifications"]
+
       if notifications_block.empty?
         #no errors
         pick_ticket_hash = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["PickTicket"]
         return_hash.merge!({
                                :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
-                               :pick_ticket_status  => pick_ticket_hash["ShipmentStatus"]["content"],
+                               :pick_ticket_status => pick_ticket_hash["ShipmentStatus"]["content"],
                                :tracking_number => pick_ticket_hash["TrackingNumber"]["content"],
                                :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
                            })
@@ -236,6 +266,29 @@ module Rex11
       else
         raise error_string
       end
+    end
+
+    def parse_receiving_ticket_add_response(xml_response)
+      error_string = ""
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      notifications_block = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]["Notifications"]
+
+      unless notifications_block
+        receiving_ticket = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]["ReceivingTicketId"]
+      else
+        notifications_block["Notification"].each do |notification|
+          if notification["ErrorCode"] != "0"
+            error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
+          end
+        end
+      end
+
+      if error_string.empty?
+        receiving_ticket
+      else
+        raise error_string
+      end
+
     end
   end
 end

@@ -5,10 +5,12 @@
       <ReceivingTicketAddResult>
         <Notifications>
           <Notification>
+            <ErrorCode>12</ErrorCode>
             <Severity>DataNotValid</Severity>
             <Message>ReceivingTicket/SupplierDetails/Country is not valid</Message>
           </Notification>
           <Notification>
+            <ErrorCode>32</ErrorCode>
             <Severity>DataNotValid</Severity>
             <Message>ReceivingTicket/Shipmentitemslist/Size[item 1] is not valid</Message>
           </Notification>

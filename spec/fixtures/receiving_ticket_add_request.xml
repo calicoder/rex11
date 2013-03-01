@@ -1,58 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <soap:Body>
+<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SOAP:Body>
     <ReceivingTicketAdd xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
       <receivingTicket xmlns="http://rex11.com/swpublicapi/ReceivingTicket.xsd">
         <Shipmentitemslist>
           <Style xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_style1</Style>
           <UPC xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_upc1</UPC>
-          <Color xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_color1</Color>
           <Size xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_size1</Size>
-          <ExpectedQuantity xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_expected_quantity1</ExpectedQuantity>
-          <UnitCost xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_cost1</UnitCost>
+          <Color xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_color1</Color>
           <ProductDescription xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_description1</ProductDescription>
-          <ProductMSRP xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_price1</ProductMSRP>
+          <ExpectedQuantity xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_quantity1</ExpectedQuantity>
           <Comments xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_comments1</Comments>
           <ShipmentType xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_shipment_type1</ShipmentType>
         </Shipmentitemslist>
+        <ShipmentTypelist>the_shipment_type1</ShipmentTypelist>
         <Shipmentitemslist>
           <Style xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_style2</Style>
           <UPC xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_upc2</UPC>
-          <Color xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_color2</Color>
           <Size xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_size2</Size>
-          <ExpectedQuantity xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_expected_quantity2</ExpectedQuantity>
-          <UnitCost xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_cost2</UnitCost>
+          <Color xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_color2</Color>
           <ProductDescription xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_description2</ProductDescription>
-          <ProductMSRP xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_price2</ProductMSRP>
+          <ExpectedQuantity xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_quantity2</ExpectedQuantity>
           <Comments xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_comments2</Comments>
           <ShipmentType xmlns="http://rex11.com/swpublicapi/ReceivingTicketItems.xsd">the_shipment_type2</ShipmentType>
         </Shipmentitemslist>
-        <ShipmentTypelist>the_shipment_type1</ShipmentTypelist>
         <ShipmentTypelist>the_shipment_type2</ShipmentTypelist>
         <Warehouse>the_warehouse</Warehouse>
         <Memo>the_memo</Memo>
-        <AuthorizedNumber>the_auth_number</AuthorizedNumber>
-        <CustomerPO>the_customer_po</CustomerPO>
-        <LicensePlate>the_license_plate</LicensePlate>
-        <DriverName>the_driver_name</DriverName>
-        <TrackingNumbers>the_tracking_numbers</TrackingNumbers>
-        <ExpectedDate>the_expected_date</ExpectedDate>
-        <SupplierDetails>
-          <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_company_name</CompanyName>
-          <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_address1</Address1>
-          <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_address2</Address2>
-          <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_city</City>
-          <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_state</State>
-          <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_zip</Zip>
-          <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_country</Country>
-          <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_non_us_region</Non_US_Region>
-          <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_phone</Phone>
-          <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_fax</Fax>
-          <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_email</Email>
-        </SupplierDetails>
         <Carrier>the_carrier</Carrier>
+        <SupplierDetails>
+          <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_company_name</CompanyName>
+          <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_address1</Address1>
+          <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_address2</Address2>
+          <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_city</City>
+          <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_state</State>
+          <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_zip</Zip>
+          <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_country</Country>
+          <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_phone</Phone>
+          <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">the_supplier_email</Email>
+        </SupplierDetails>
       </receivingTicket>
     </ReceivingTicketAdd>
-  </soap:Body>
-</soap:Envelope>
+  </SOAP:Body>
+</SOAP:Envelope>
