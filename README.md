@@ -25,8 +25,7 @@ Initialize Rex11 client:
 
 Create style master:
 
-    require "rex11"
-    client = Rex11::Client.add_styles_for_item(item)
+    client.add_styles_for_item(item)
 
 
 ## Contributing
