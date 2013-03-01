@@ -7,11 +7,11 @@
       <products>
         <StyleMasterProduct>
           <Style xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_style</Style>
+          <UPC xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_upc</UPC>
+          <Size xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_size</Size>
+          <Color xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_color</Color>
           <Description
               xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_description</Description>
-          <Color xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_color</Color>
-          <Size xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_size</Size>
-          <UPC xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_upc</UPC>
           <Price xmlns="http://rex11.com/swpublicapi/StyleMasterProduct.xsd">the_price</Price>
         </StyleMasterProduct>
       </products>
