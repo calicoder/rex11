@@ -1,6 +1,6 @@
 # Rex11
 
-TODO: Write a gem description
+Ruby Library for REX11 Warehouse Management System
 
 ## Installation
 
@@ -18,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Initialize Rex11 client:
+
+    require "rex11"
+    client = Rex11::Client.new("rex_username", "rex_password")
+
+Create style master:
+
+    require "rex11"
+    client = Rex11::Client.add_styles_for_item(item)
+
 
 ## Contributing
 
