@@ -139,6 +139,21 @@ module Rex11
       parse_get_pick_ticket_object_by_bar_code(commit(xml_request.target!))
     end
 
+    def create_receiving_ticket_for_items(items, supplier, receiving_ticket_options)
+      require_auth_token
+      xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
+      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.SOAP :Body do
+          xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.ptbarcode(pick_ticket_number)
+          end
+        end
+      end
+      parse_receiving_ticket_add_response(xml_request.target!)
+    end
+
     private
     def commit(request)
       ssl_post(@url, request)
