@@ -211,6 +211,92 @@ describe Rex11::Client do
     end
   end
 
+  context "pick_ticket_by_number" do
+    before do
+      @pick_ticket_number = "the_pick_ticket_number"
+      @items = [
+          {:upc => "the_upc1", :quantity => 1},
+          {:upc => "the_upc2", :quantity => 2}
+      ]
+
+      @ship_to_address = {:first_name => "the_ship_to_first_name",
+                          :last_name => "the_ship_to_last_name",
+                          :company_name => "the_ship_to_company_name",
+                          :address1 => "the_ship_to_address1",
+                          :address2 => "the_ship_to_address2",
+                          :city => "the_ship_to_city",
+                          :state => "the_ship_to_state",
+                          :zip => "the_ship_to_zip",
+                          :country => "the_ship_to_country",
+                          :phone => "the_ship_to_phone",
+                          :email => "the_ship_to_email"
+      }
+
+      @pick_ticket_options = {
+          :pick_ticket_number => "23022012012557",
+          :warehouse => "the_warehouse",
+          :payment_terms => "NET",
+          :use_ups_account => "1",
+          :ship_via_account_number => "1AB345",
+          :ship_via => "UPS",
+          :ship_service => "UPS GROUND - Commercial",
+          :billing_option => "PREPAID",
+          :bill_to_address => {
+              :first_name => "the_bill_to_first_name",
+              :last_name => "the_bill_to_last_name",
+              :company_name => "the_bill_to_company_name",
+              :address1 => "the_bill_to_address1",
+              :address2 => "the_bill_to_address2",
+              :city => "the_bill_to_city",
+              :state => "the_bill_to_state",
+              :zip => "the_bill_to_zip",
+              :country => "the_bill_to_country",
+              :phone => "the_bill_to_phone",
+              :email => "the_bill_to_email"
+          }
+      }
+
+
+      @client.auth_token = "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
+    end
+
+    it "should require_auth_token" do
+      @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
+      @client.should_receive(:require_auth_token)
+      @client.pick_ticket_by_number(@pick_ticket_number)
+    end
+
+    context "request" do
+      it "should form correct request" do
+        @client.should_receive(:commit).with(squeeze_xml(xml_fixture("get_pick_ticket_object_by_bar_code_request"))).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
+        @client.pick_ticket_by_number(@pick_ticket_number)
+      end
+    end
+
+    context "response" do
+      context "when success" do
+        it "should return hash" do
+          @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
+          @client.pick_ticket_by_number(@pick_ticket_number).should == {
+              :pick_ticket_number => "the_pick_ticket_number",
+              :pick_ticket_status => "the_pick_ticket_status",
+              :tracking_number => "the_tracking_number",
+              :shipping_charge => nil
+          }
+        end
+      end
+
+      context "when error" do
+        it "should raise error" do
+          @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_error"))
+          lambda {
+            @client.pick_ticket_by_number(@pick_ticket_number)
+          }.should raise_error("Error 83: BarCode doesn't exist. ")
+        end
+      end
+    end
+  end
+
   context "require_auth_token" do
     it "should raise error if auth_token is not set" do
       lambda {
