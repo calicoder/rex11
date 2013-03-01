@@ -1,12 +1,14 @@
 require "builder"
 require 'xmlsimple'
+require 'net/http'
 
 module Rex11
   class Client
-    include ActiveMerchant::PostsData
 
-    TEST_URL = "http://sync.rex11.com/ws/v2staging/publicapiws.asmx"
-    LIVE_URL = "http://sync.rex11.com/ws/v2prod/publicapiws.asmx"
+    TEST_HOST = "sync.rex11.com"
+    TEST_PATH = "/ws/v2staging/publicapiws.asmx"
+    LIVE_HOST = "sync.rex11.com"
+    LIVE_PATH = "/ws/v2prod/publicapiws.asmx"
 
     attr_accessor :auth_token
 
@@ -24,17 +26,18 @@ module Rex11
       @password = password
 
       @logging = options[:logging]
-      @url = testing ? TEST_URL : LIVE_URL
+      @host = testing ? TEST_HOST : LIVE_HOST
+      @path = testing ? TEST_PATH : LIVE_PATH
       @options = options
     end
 
     def authenticate
       xml = Builder::XmlMarkup.new
       xml.instruct!
-      xml.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml.SOAP :Body do
+      xml.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml.soap :Body do
           xml.AuthenticationTokenGet(:xmlns => "http://rex11.com/webmethods/") do |xml|
-            xml.WebAddress(@url)
+            xml.WebAddress(@host)
             xml.UserName(@username)
             xml.Password(@password)
           end
@@ -184,8 +187,10 @@ module Rex11
     end
 
     private
-    def commit(request)
-      ssl_post(@url, request)
+    def commit(xml_request)
+      http = Net::HTTP.new(@host, 80)
+      resp = http.post(@path, xml_request, {'Content-Type' => 'text/xml'})
+      resp.body
     end
 
     def require_auth_token
