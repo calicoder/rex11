@@ -1,15 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <ReceivingTicketAddResponse xmlns="http://rex11.com/webmethods/">
       <ReceivingTicketAddResult>
-        <Notifications>
-          <Notification>
-            <Severity>Success</Severity>
-            <Message>Data saved successfully.</Message>
-          </Notification>
-        </Notifications>
-        <ReceivingTicketId>WHRTN122793</ReceivingTicketId>
+        <ReceivingTicketId>the_receiving_ticket_id</ReceivingTicketId>
       </ReceivingTicketAddResult>
     </ReceivingTicketAddResponse>
   </soap:Body>
