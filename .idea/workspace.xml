@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cd8afa6-e2fc-4654-94b0-494f67c60611" name="Default" comment="">
+    <list default="true" id="1cd8afa6-e2fc-4654-94b0-494f67c60611" name="Default" comment="remove from git">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="rex11.iws" />
@@ -80,7 +81,7 @@
           <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="88" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
+                <state line="18" column="84" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
                   <folding />
                 </state>
               </provider>
@@ -765,7 +766,11 @@
       <created>1362171324214</created>
       <updated>1362171324214</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="remove from git">
+      <created>1362171347990</created>
+      <updated>1362171347990</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -827,7 +832,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="ignore .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove from git" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -862,6 +867,7 @@
     <MESSAGE value="delete unused files" />
     <MESSAGE value="specs for add receiving ticket" />
     <MESSAGE value="ignore .idea" />
+    <MESSAGE value="remove from git" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -974,7 +980,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="88" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
+        <state line="18" column="84" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
           <folding />
         </state>
       </provider>
