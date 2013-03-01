@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd8afa6-e2fc-4654-94b0-494f67c60611" name="Default" comment="add style added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml" afterPath="$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="rex11.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,28 +24,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="client.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/rex11/client.rb">
+          <file leaf-file-name="style_master_product_add_request.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="134" column="55" selection-start="8144" selection-end="8144" vertical-scroll-proportion="0.0">
+                <state line="13" column="80" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="get_pick_ticket_object_by_bar_code_request.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_request.xml">
+          <file leaf-file-name="authentication_token_get_request.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/authentication_token_get_request.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="39" selection-start="408" selection-end="430" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="address_spec.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/lib/address_spec.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="25" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -63,10 +51,46 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="rex11_spec.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/lib/rex11_spec.rb">
+          <file leaf-file-name="get_pick_ticket_object_by_bar_code_response_success.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_success.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="65" column="69" selection-start="5764" selection-end="5764" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="receiving_ticket_add_request.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="8" column="48" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/rex11/client.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="268" column="73" selection-start="14987" selection-end="14987" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="18" column="114" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pick_ticket_add_response_success.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_success.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="48" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -75,43 +99,21 @@
           <file leaf-file-name="client_spec.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/lib/client_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="182" column="6" selection-start="6848" selection-end="6848" vertical-scroll-proportion="0.0">
-                  <folding />
+                <state line="254" column="4" selection-start="9608" selection-end="9608" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#157#1341#0" expanded="false" />
+                    <element signature="e#3046#6349#0" expanded="false" />
+                    <element signature="e#6385#8063#0" expanded="false" />
+                    <element signature="e#11107#11497#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="receiving_ticket_add_request.xml" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml">
+          <file leaf-file-name="pick_ticket_add_response_error.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_error.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="34" column="101" selection-start="2709" selection-end="2709" vertical-scroll-proportion="0.62528735">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="receiving_ticket_add_response_success.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="receiving_ticket_add_response_error.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="13" column="75" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="get_pick_ticket_object_by_bar_code_response_success.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_success.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="69" selection-start="5764" selection-end="5764" vertical-scroll-proportion="0.0">
+                <state line="13" column="29" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -124,16 +126,39 @@
           <file leaf-file-name="pick_ticket_add_request.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_request.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
+                <state line="15" column="41" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pick_ticket_add_response_error.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_error.xml">
+          <file leaf-file-name="style_master_product_add_request.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
+                <state line="11" column="94" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client_spec.rb" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/spec/lib/client_spec.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="271" column="121" selection-start="10566" selection-end="10566" vertical-scroll-proportion="0.5493911">
+                  <folding>
+                    <element signature="e#157#1341#0" expanded="false" />
+                    <element signature="e#3046#6349#0" expanded="false" />
+                    <element signature="e#6385#8063#0" expanded="false" />
+                    <element signature="e#11107#11497#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="receiving_ticket_add_response_error.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="19" column="32" selection-start="915" selection-end="915" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -148,46 +173,28 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style_master_product_add_request.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml">
+          <file leaf-file-name="client.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/rex11/client.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
+                <state line="273" column="0" selection-start="15152" selection-end="15152" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style_master_product_add_response_error.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_error.xml">
+          <file leaf-file-name="receiving_ticket_add_response_success.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
+                <state line="9" column="49" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style_master_product_add_response_success.xml" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml">
+          <file leaf-file-name="receiving_ticket_add_request.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="48" selection-start="670" selection-end="670" vertical-scroll-proportion="0.2905569">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="get_pick_ticket_object_by_bar_code_request.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_request.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="get_pick_ticket_object_by_bar_code_response_error.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_error.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="1" column="168" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -195,15 +202,6 @@
           </file>
           <file leaf-file-name="authentication_token_get_response_success.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/fixtures/authentication_token_get_response_success.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="get_pick_ticket_object_by_bar_code_response_success.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_success.xml">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
                   <folding />
@@ -226,22 +224,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/spec/fixtures/authentication_token_get_request.xml" />
-        <option value="$PROJECT_DIR$/spec/fixtures/authentication_token_get_response_error.xml" />
-        <option value="$PROJECT_DIR$/spec/fixtures/authentication_token_get_response_success.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_request.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_error.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_success.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/pick_ticket_add_request.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_error.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_success.xml" />
-        <option value="$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml" />
-        <option value="$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_error.xml" />
-        <option value="$PROJECT_DIR$/lib/rex11/client.rb" />
-        <option value="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml" />
-        <option value="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml" />
+        <option value="$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_error.xml" />
         <option value="$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml" />
+        <option value="$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml" />
+        <option value="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml" />
+        <option value="$PROJECT_DIR$/spec/fixtures/test.xml" />
+        <option value="$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml" />
+        <option value="$PROJECT_DIR$/lib/rex11/client.rb" />
+        <option value="$PROJECT_DIR$/spec/lib/client_spec.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -307,24 +305,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rex11" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rex11" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -666,10 +646,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="RSpec.client_spec" />
-        <item index="1" class="java.lang.String" itemvalue="Ruby.client" />
-        <item index="2" class="java.lang.String" itemvalue="RSpec.Rex11::Client create_pick_tickets_for_items response when error should raise error" />
-        <item index="3" class="java.lang.String" itemvalue="RSpec.client_spec" />
-        <item index="4" class="java.lang.String" itemvalue="RSpec.Rex11::Client create_pick_tickets_for_items response when success should return hash" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.client_spec" />
+        <item index="2" class="java.lang.String" itemvalue="Ruby.client" />
+        <item index="3" class="java.lang.String" itemvalue="RSpec.Rex11::Client create_pick_tickets_for_items response when error should raise error" />
+        <item index="4" class="java.lang.String" itemvalue="RSpec.client_spec" />
       </list>
     </recent_temporary>
   </component>
@@ -746,7 +726,43 @@
       <created>1362086238986</created>
       <updated>1362086238986</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="formatting">
+      <created>1362086688467</created>
+      <updated>1362086688467</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add specs for pick_ticket_by_number">
+      <created>1362113520686</created>
+      <updated>1362113520686</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add receiving ticket xmls">
+      <created>1362118660106</created>
+      <updated>1362118660107</updated>
+    </task>
+    <task id="LOCAL-00016" summary="receivinng ticket response success">
+      <created>1362118962506</created>
+      <updated>1362118962506</updated>
+    </task>
+    <task id="LOCAL-00017" summary="test">
+      <created>1362170320630</created>
+      <updated>1362170320630</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add receiving ticket add">
+      <created>1362171143965</created>
+      <updated>1362171143965</updated>
+    </task>
+    <task id="LOCAL-00019" summary="rearrange to make more logical">
+      <created>1362171159439</created>
+      <updated>1362171159439</updated>
+    </task>
+    <task id="LOCAL-00020" summary="delete unused files">
+      <created>1362171214027</created>
+      <updated>1362171214027</updated>
+    </task>
+    <task id="LOCAL-00021" summary="specs for add receiving ticket">
+      <created>1362171245030</created>
+      <updated>1362171245030</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -756,14 +772,14 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329296" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19203188" sideWeight="0.7221802" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14302789" sideWeight="0.62301284" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27781984" sideWeight="0.9882271" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37698713" sideWeight="0.9882271" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -808,7 +824,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add instruct to xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="specs for add receiving ticket" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -833,14 +849,30 @@
     <MESSAGE value="add pick_ticket_by_number method" />
     <MESSAGE value="add the pick ticket status" />
     <MESSAGE value="add instruct to xml" />
+    <MESSAGE value="formatting" />
+    <MESSAGE value="add specs for pick_ticket_by_number" />
+    <MESSAGE value="add receiving ticket xmls" />
+    <MESSAGE value="receivinng ticket response success" />
+    <MESSAGE value="test" />
+    <MESSAGE value="add receiving ticket add" />
+    <MESSAGE value="rearrange to make more logical" />
+    <MESSAGE value="delete unused files" />
+    <MESSAGE value="specs for add receiving ticket" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/authentication_token_get_response_error.xml">
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
+        <state line="13" column="80" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_error.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="16" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -852,16 +884,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_request.xml">
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="39" selection-start="408" selection-end="430" vertical-scroll-proportion="0.0">
+        <state line="8" column="48" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_response_error.xml">
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="15" column="16" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -873,79 +905,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/get_pick_ticket_object_by_bar_code_request.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1362086143000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_error.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_success.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="18" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_request.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_error.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/lib/client_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="6" selection-start="6848" selection-end="6848" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/rex11/client.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="55" selection-start="8144" selection-end="8144" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="15" column="41" selection-start="899" selection-end="899" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_error.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="75" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
+        <state line="19" column="32" selection-start="915" selection-end="915" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/style_master_product_add_response_success.xml">
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_error.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="48" selection-start="670" selection-end="670" vertical-scroll-proportion="0.2905569">
+        <state line="13" column="29" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_request.xml">
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/pick_ticket_add_response_success.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="101" selection-start="2709" selection-end="2709" vertical-scroll-proportion="0.62528735">
+        <state line="11" column="48" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/receiving_ticket_add_response_success.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="49" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/lib/client_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="254" column="4" selection-start="9608" selection-end="9608" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#157#1341#0" expanded="false" />
+            <element signature="e#3046#6349#0" expanded="false" />
+            <element signature="e#6385#8063#0" expanded="false" />
+            <element signature="e#11107#11497#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/rex11/client.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="268" column="73" selection-start="14987" selection-end="14987" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="114" selection-start="160" selection-end="160" vertical-scroll-proportion="0.39452055">
           <folding />
         </state>
       </provider>
