@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SOAP:Body>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
     <PickTicketAdd xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
       <newPickTicket xmlns="http://rex11.com/swpublicapi/PickTicket.xsd">
@@ -48,5 +48,5 @@
         </LineItem>
       </newPickTicket>
     </PickTicketAdd>
-  </SOAP:Body>
-</SOAP:Envelope>
+  </soap:Body>
+</soap:Envelope>

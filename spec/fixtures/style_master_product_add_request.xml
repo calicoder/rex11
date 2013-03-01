@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOAP:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SOAP:Body>
+  <soap:Body>
     <StyleMasterProductAdd xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
       <products>
@@ -16,5 +16,5 @@
         </StyleMasterProduct>
       </products>
     </StyleMasterProductAdd>
-  </SOAP:Body>
-</SOAP:Envelope>
+  </soap:Body>
+</soap:Envelope>

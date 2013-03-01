@@ -50,8 +50,8 @@ module Rex11
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
-      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml_request.SOAP :Body do
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
           xml_request.StyleMasterProductAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
             xml_request.products do |xml_request|
@@ -74,8 +74,8 @@ module Rex11
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
-      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml_request.SOAP :Body do
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
           xml_request.PickTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
             xml_request.newPickTicket(:xmlns => "http://rex11.com/swpublicapi/PickTicket.xsd") do |xml_request|
@@ -131,8 +131,8 @@ module Rex11
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
-      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml_request.SOAP :Body do
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
           xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
             xml_request.ptbarcode(pick_ticket_number)
@@ -146,8 +146,8 @@ module Rex11
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
-      xml_request.SOAP :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
-        xml_request.SOAP :Body do
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
           xml_request.ReceivingTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
             xml_request.receivingTicket(:xmlns => "http://rex11.com/swpublicapi/ReceivingTicket.xsd") do |xml_request|
