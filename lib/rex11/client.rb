@@ -210,14 +210,9 @@ module Rex11
     end
 
     def parse_add_style_response(xml_response)
-      error_string = ""
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
-      notifications = response["Body"]["StyleMasterProductAddResponse"]["StyleMasterProductAddResult"]["Notifications"]["Notification"]
-      notifications.each do |notification|
-        if notification["ErrorCode"] != "0"
-          error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
-        end
-      end
+      response_content = response["Body"]["StyleMasterProductAddResponse"]["StyleMasterProductAddResult"]
+      error_string = parse_error(response_content)
 
       if error_string.empty?
         true
@@ -227,14 +222,9 @@ module Rex11
     end
 
     def parse_pick_ticket_add_response(xml_response)
-      error_string = ""
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
-      notifications = response["Body"]["PickTicketAddResponse"]["PickTicketAddResult"]["Notifications"]["Notification"]
-      notifications.each do |notification|
-        if notification["ErrorCode"] != "0"
-          error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
-        end
-      end
+      response_content = response["Body"]["PickTicketAddResponse"]["PickTicketAddResult"]
+      error_string = parse_error(response_content)
 
       if error_string.empty?
         true
