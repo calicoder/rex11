@@ -88,7 +88,7 @@ describe Rex11::Client do
     end
   end
 
-  context "create_pick_tickets" do
+  context "create_pick_ticket" do
     before do
       @items = [
           {:upc => "the_upc1", :quantity => 1},
@@ -138,13 +138,13 @@ describe Rex11::Client do
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
+      @client.create_pick_ticket(@items, @ship_to_address, @pick_ticket_options)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("pick_ticket_add_request"))).and_return(xml_fixture("pick_ticket_add_response_success"))
-        @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
+        @client.create_pick_ticket(@items, @ship_to_address, @pick_ticket_options)
       end
     end
 
@@ -152,7 +152,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return true" do
           @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_success"))
-          @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options).should == true
+          @client.create_pick_ticket(@items, @ship_to_address, @pick_ticket_options).should == true
         end
       end
 
@@ -160,7 +160,7 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_error"))
           lambda {
-            @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
+            @client.create_pick_ticket(@items, @ship_to_address, @pick_ticket_options)
           }.should raise_error("Error 56: PickTicket/ShipVia is not valid. Error 61: PickTicket/ShipService is not valid. Error 10: State for ShipToAddress is required for USA. ")
         end
       end

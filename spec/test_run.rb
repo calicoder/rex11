@@ -107,8 +107,8 @@ puts "Creating Style Master...."
 result = client.add_style(item2)
 puts "Added Style Master: #{result}\n\n"
 
-puts "Creating Pick Tickets..."
-response = client.create_pick_tickets(items, ship_to_address, pick_ticket_options)
+puts "Creating Pick Ticket..."
+response = client.create_pick_ticket(items, ship_to_address, pick_ticket_options)
 puts "Created Pick Tickets: #{response}\n\n"
 
 puts "Canceling Pick Ticket..."

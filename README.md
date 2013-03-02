@@ -95,7 +95,7 @@ Create pick ticket for items:
         }
     }
 
-    client.create_pick_tickets(items, ship_to_address, pick_ticket_options)
+    client.create_pick_ticket(items, ship_to_address, pick_ticket_options)
 
 
 
