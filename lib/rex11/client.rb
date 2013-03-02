@@ -12,7 +12,7 @@ module Rex11
 
     attr_accessor :auth_token
 
-    def initialize(username, password, web_address, testing = true, options = {})
+    def initialize(username, password, web_address, testing = false, options = {})
       raise "Username is required" unless username
       raise "Password is required" unless password
 
@@ -191,6 +191,7 @@ module Rex11
     def commit(xml_request)
       http = Net::HTTP.new(@host, 80)
       response = http.post(@path, xml_request, {'Content-Type' => 'text/xml'})
+      #puts response.body
       response.body
     end
 
@@ -241,13 +242,12 @@ module Rex11
       pick_ticket_hash = response_content["PickTicket"]
       if pick_ticket_hash and !pick_ticket_hash.empty?
         return_hash.merge!({
-                               :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
-                               :pick_ticket_status => pick_ticket_hash["ShipmentStatus"]["content"],
-                               :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
+                               :pick_ticket_number => (value = pick_ticket_hash["PickTicketNumber"]) ? value["content"] : nil,
+                               :pick_ticket_status => (value = pick_ticket_hash["ShipmentStatus"]) ? value["content"] : nil,
+                               :pick_ticket_status_code => (value = pick_ticket_hash["ShipmentStatusCode"]) ? value["content"] : nil,
+                               :shipping_charge => (value = pick_ticket_hash["FreightCharge"]) ? value["content"] : nil,
+                               :tracking_number => (tracking_number = pick_ticket_hash["TrackingNumber"]) ? tracking_number["content"] : nil
                            })
-
-        tracking_number = pick_ticket_hash["TrackingNumber"]
-        return_hash.merge!({:tracking_number => tracking_number ? tracking_number["content"] : nil})
       else
         error_string = parse_error(response_content)
         raise error_string unless error_string.empty?

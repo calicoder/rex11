@@ -193,8 +193,10 @@ describe Rex11::Client do
           @client.pick_ticket_by_number(@pick_ticket_number).should == {
               :pick_ticket_number => "the_pick_ticket_number",
               :pick_ticket_status => "the_pick_ticket_status",
+              :pick_ticket_status_code => "the_pick_ticket_status_code",
               :tracking_number => "the_tracking_number",
               :shipping_charge => nil
+
           }
 
         end

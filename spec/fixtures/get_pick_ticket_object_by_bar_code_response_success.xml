@@ -96,6 +96,7 @@
           <Amount xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
           <Totalshipmentqty xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">1</Totalshipmentqty>
           <ShipmentStatus xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_pick_ticket_status</ShipmentStatus>
+          <ShipmentStatusCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_pick_ticket_status_code</ShipmentStatusCode>
           <FreightCharge xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />
           <TrackingNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_tracking_number</TrackingNumber>
         </PickTicket>
