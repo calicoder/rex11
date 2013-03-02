@@ -260,7 +260,7 @@ module Rex11
 
       receiving_ticket_id = response_content["ReceivingTicketId"]
       if receiving_ticket_id and !receiving_ticket_id.empty?
-        receiving_ticket_id
+        {:receiving_ticket_id => receiving_ticket_id}
       else
         error_string = parse_error(response_content)
         raise error_string unless error_string.empty?

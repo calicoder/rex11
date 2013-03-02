@@ -269,7 +269,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return the receiving ticket id" do
           @client.should_receive(:commit).and_return(xml_fixture("receiving_ticket_add_response_success"))
-          @client.create_receiving_ticket(@items, @receiving_ticket_options).should == "the_receiving_ticket_id"
+          @client.create_receiving_ticket(@items, @receiving_ticket_options).should == {:receiving_ticket_id => "the_receiving_ticket_id"}
         end
       end
 
