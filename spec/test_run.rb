@@ -1,10 +1,11 @@
 require 'rex11'
 
-USERNAME = "yoram"
-PASSWORD = "not_set"
-WEB_ADDRESS = "www.yoramtestaccount.atworkweb.com"
+USERNAME = "xxx"
+PASSWORD = "xxx"
+WEB_ADDRESS = "xxx"
+TESTING = true
 
-client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS)
+client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS, TESTING, :logging => false)
 
 item = {
     :style => "ABC123",
@@ -109,6 +110,10 @@ puts "Added Style Master: #{result}\n\n"
 puts "Creating Pick Tickets..."
 response = client.create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
 puts "Created Pick Tickets: #{response}\n\n"
+
+puts "Canceling Pick Ticket..."
+response = client.cancel_pick_ticket(pick_ticket_number)
+puts "Canceled Pick Ticket: #{response}\n\n"
 
 puts "Getting Pick Tickets by number..."
 response = client.pick_ticket_by_number(pick_ticket_number)
