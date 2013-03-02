@@ -46,7 +46,7 @@ module Rex11
       parse_authenticate_response(commit(xml.target!))
     end
 
-    def add_styles_for_item(item)
+    def add_style(item)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
@@ -70,7 +70,7 @@ module Rex11
       parse_add_style_response(commit(xml_request.target!))
     end
 
-    def create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
+    def create_pick_ticket(items, ship_to_address, pick_ticket_options)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
@@ -79,7 +79,7 @@ module Rex11
           xml_request.PickTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
             xml_request.PickTicket(:xmlns => "http://rex11.com/swpublicapi/PickTicket.xsd") do |xml_request|
-              xml_request.PickTicketNumber(pick_ticket_options[:pick_ticket_number])
+              xml_request.PickTicketNumber(pick_ticket_options[:pick_ticket_id])
               xml_request.WareHouse(pick_ticket_options[:warehouse])
               xml_request.PaymentTerms(pick_ticket_options[:payment_terms])
               xml_request.UseAccountUPS(pick_ticket_options[:use_ups_account])
@@ -127,7 +127,7 @@ module Rex11
       parse_pick_ticket_add_response(commit(xml_request.target!))
     end
 
-    def cancel_pick_ticket(pick_ticket_number)
+    def cancel_pick_ticket(pick_ticket_id)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
@@ -135,7 +135,7 @@ module Rex11
         xml_request.soap :Body do
           xml_request.CancelPickTicket(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
-            xml_request.PickTicketId(pick_ticket_number)
+            xml_request.PickTicketId(pick_ticket_id)
           end
         end
       end
@@ -155,7 +155,7 @@ module Rex11
 
     end
 
-    def pick_ticket_by_number(pick_ticket_number)
+    def pick_ticket_by_number(pick_ticket_id)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
@@ -163,7 +163,7 @@ module Rex11
         xml_request.soap :Body do
           xml_request.GetPickTicketObjectByBarCode(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
-            xml_request.ptbarcode(pick_ticket_number)
+            xml_request.ptbarcode(pick_ticket_id)
           end
         end
       end
@@ -269,7 +269,7 @@ module Rex11
       pick_ticket_hash = response_content["PickTicket"]
       if pick_ticket_hash and !pick_ticket_hash.empty?
         return_hash.merge!({
-                               :pick_ticket_number => (value = pick_ticket_hash["PickTicketNumber"]) ? value["content"] : nil,
+                               :pick_ticket_id => (value = pick_ticket_hash["PickTicketNumber"]) ? value["content"] : nil,
                                :pick_ticket_status => (value = pick_ticket_hash["ShipmentStatus"]) ? value["content"] : nil,
                                :pick_ticket_status_code => (value = pick_ticket_hash["ShipmentStatusCode"]) ? value["content"] : nil,
                                :shipping_charge => (value = pick_ticket_hash["FreightCharge"]) ? value["content"] : nil,
