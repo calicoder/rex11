@@ -211,7 +211,7 @@ describe Rex11::Client do
     end
   end
 
-  context "create_receiving_ticket_for_items" do
+  context "create_receiving_ticket" do
     before do
       @items = [{:style => "the_style1",
                  :upc => "the_upc1",
@@ -255,13 +255,13 @@ describe Rex11::Client do
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("receiving_ticket_add_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.create_receiving_ticket_for_items(@items, @receiving_ticket_options)
+      @client.create_receiving_ticket(@items, @receiving_ticket_options)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("receiving_ticket_add_request"))).and_return(xml_fixture("receiving_ticket_add_response_success"))
-        @client.create_receiving_ticket_for_items(@items, @receiving_ticket_options)
+        @client.create_receiving_ticket(@items, @receiving_ticket_options)
       end
     end
 
@@ -269,7 +269,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return the receiving ticket id" do
           @client.should_receive(:commit).and_return(xml_fixture("receiving_ticket_add_response_success"))
-          @client.create_receiving_ticket_for_items(@items, @receiving_ticket_options).should == "the_receiving_ticket_id"
+          @client.create_receiving_ticket(@items, @receiving_ticket_options).should == "the_receiving_ticket_id"
         end
       end
 
@@ -277,7 +277,7 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("receiving_ticket_add_response_error"))
           lambda {
-            @client.create_receiving_ticket_for_items(@items, @receiving_ticket_options)
+            @client.create_receiving_ticket(@items, @receiving_ticket_options)
           }.should raise_error("Error 12: ReceivingTicket/SupplierDetails/Country is not valid. Error 32: ReceivingTicket/Shipmentitemslist/Size[item 1] is not valid. ")
         end
       end

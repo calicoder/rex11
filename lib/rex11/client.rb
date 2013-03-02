@@ -79,7 +79,7 @@ module Rex11
         xml_request.soap :Body do
           xml_request.PickTicketAdd(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
             xml_request.AuthenticationString(@auth_token)
-            xml_request.newPickTicket(:xmlns => "http://rex11.com/swpublicapi/PickTicket.xsd") do |xml_request|
+            xml_request.PickTicket(:xmlns => "http://rex11.com/swpublicapi/PickTicket.xsd") do |xml_request|
               xml_request.PickTicketNumber(pick_ticket_options[:pick_ticket_number])
               xml_request.WareHouse(pick_ticket_options[:warehouse])
               xml_request.PaymentTerms(pick_ticket_options[:payment_terms])
@@ -143,7 +143,7 @@ module Rex11
       parse_get_pick_ticket_object_by_bar_code(commit(xml_request.target!))
     end
 
-    def create_receiving_ticket_for_items(items, receiving_ticket_options)
+    def create_receiving_ticket(items, receiving_ticket_options)
       require_auth_token
       xml_request = Builder::XmlMarkup.new
       xml_request.instruct!
@@ -190,8 +190,8 @@ module Rex11
     private
     def commit(xml_request)
       http = Net::HTTP.new(@host, 80)
-      resp = http.post(@path, xml_request, {'Content-Type' => 'text/xml'})
-      resp.body
+      response = http.post(@path, xml_request, {'Content-Type' => 'text/xml'})
+      response.body
     end
 
     def require_auth_token
@@ -250,13 +250,14 @@ module Rex11
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
       notifications_block = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["Notifications"]
 
+
       if notifications_block.empty?
         #no errors
         pick_ticket_hash = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["PickTicket"]
         return_hash.merge!({
                                :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
                                :pick_ticket_status => pick_ticket_hash["ShipmentStatus"]["content"],
-                               :tracking_number => pick_ticket_hash["TrackingNumber"]["content"],
+                               :tracking_number => (tracking_number["content"] if tracking_number = pick_ticket_hash["TrackingNumber"]),
                                :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
                            })
       else
@@ -278,24 +279,18 @@ module Rex11
     def parse_receiving_ticket_add_response(xml_response)
       error_string = ""
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
-      notifications_block = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]["Notifications"]
+      response_content = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]
 
-      unless notifications_block
-        receiving_ticket = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]["ReceivingTicketId"]
+      if receiving_ticket_id = response_content["ReceivingTicketId"]
+        receiving_ticket_id
       else
-        notifications_block["Notification"].each do |notification|
+        response_content["Notifications"]["Notification"].each do |notification|
           if notification["ErrorCode"] != "0"
             error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
           end
         end
+        raise error_string unless error_string.empty?
       end
-
-      if error_string.empty?
-        receiving_ticket
-      else
-        raise error_string
-      end
-
     end
   end
 end

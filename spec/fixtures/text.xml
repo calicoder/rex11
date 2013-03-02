@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <GetPickTicketObjectByBarCodeResponse xmlns="http://rex11.com/webmethods/">
+      <GetPickTicketObjectByBarCodeResult>
+        <Notifications/>
+        <PickTicket>
+          <PickTicketNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">YORA1A23022012012557</PickTicketNumber>
+          <WareHouse xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">BERGEN LOGISTICS NJ</WareHouse>
+          <OrderDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <StartDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <CancelDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <ShipDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">03/06/2013</ShipDate>
+          <ActualShipDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <PaymentTerms xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">NET</PaymentTerms>
+          <CODAmount xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DepartmentDescription xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <Store xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <ShipVia xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">UPS</ShipVia>
+          <ShipViaAccountNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DVPercentage xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">10</DVPercentage>
+          <BillingOption xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">THIRD PARTY</BillingOption>
+          <ShipService xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">UPSGROUND-Commercial</ShipService>
+          <SpecialInstructions xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <CustomerPONumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <AuthorizationNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <OrderNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <TakenBy xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DISTRIBUTIONCENTER xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DivisionCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <DivisionDescription xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <Department xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <TRADINGPARTNER xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <UseAccountUPS xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">false</UseAccountUPS>
+          <VendorNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <BillToCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <BillToAddress xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Netaporter</CompanyName>
+            <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">725 Darlington Avenue</Address1>
+            <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Mahwah</City>
+            <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">NJ</State>
+            <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">07430</Zip>
+            <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">United States</Country>
+            <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">212-522-1212</Phone>
+            <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">net@netaporter.com</Email>
+          </BillToAddress>
+          <ShipToCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <ShipToAddress xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <FirstName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <LastName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <CompanyName xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">Time Magazine</CompanyName>
+            <Address1 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">1271 Avenue of the Americas</Address1>
+            <Address2 xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <City xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">New York</City>
+            <State xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">NY</State>
+            <Zip xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">10020</Zip>
+            <Country xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">United States</Country>
+            <Non_US_Region xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <Phone xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">212-522-1212</Phone>
+            <Fax xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd"/>
+            <Email xmlns="http://rex11.com/swpublicapi/CustomerOrder.xsd">time@magazine.com</Email>
+          </ShipToAddress>
+          <MarkForCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <LineItems xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <Season></Season>
+            <Style>ABC123</Style>
+            <Description>Chanel Red Skirt</Description>
+            <Color>Black</Color>
+            <Size>LARGE</Size>
+            <UPC>ABC123</UPC>
+            <Quantity>1</Quantity>
+            <RequestedQuantity>1</RequestedQuantity>
+            <ShippedQuantity>1</ShippedQuantity>
+            <Comments/>
+          </LineItems>
+          <LineItems xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">
+            <Season></Season>
+            <Style>DEF123</Style>
+            <Description>Chanel Red Blouse</Description>
+            <Color>Purple</Color>
+            <Size>LARGE</Size>
+            <UPC>DEF123</UPC>
+            <Quantity>1</Quantity>
+            <RequestedQuantity>1</RequestedQuantity>
+            <ShippedQuantity>1</ShippedQuantity>
+            <Comments/>
+          </LineItems>
+          <Amount xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+          <Totalshipmentqty xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">2</Totalshipmentqty>
+          <ShipmentStatus xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">CSR - No Stock</ShipmentStatus>
+          <ShipmentStatusCode xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">370</ShipmentStatusCode>
+          <FreightCharge xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd"/>
+        </PickTicket>
+      </GetPickTicketObjectByBarCodeResult>
+    </GetPickTicketObjectByBarCodeResponse>
+  </soap:Body>
+</soap:Envelope>
