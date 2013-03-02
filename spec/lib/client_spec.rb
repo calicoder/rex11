@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Rex11::Client do
   before do
-    @client = Rex11::Client.new("the_username", "the_password")
+    @client = Rex11::Client.new("the_username", "the_password", "the_web_address")
   end
 
   context "authenticate" do

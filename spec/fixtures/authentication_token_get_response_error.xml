@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<string xmlns="http://rex11.com/webmethods/"/>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <AuthenticationTokenGetResponse xmlns="http://rex11.com/webmethods/">
+      <AuthenticationTokenGetResult/>
+    </AuthenticationTokenGetResponse>
+  </soap:Body>
+</soap:Envelope>

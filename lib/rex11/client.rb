@@ -12,7 +12,7 @@ module Rex11
 
     attr_accessor :auth_token
 
-    def initialize(username, password, testing = true, options = {})
+    def initialize(username, password, web_address, testing = true, options = {})
       raise "Username is required" unless username
       raise "Password is required" unless password
 
@@ -24,6 +24,7 @@ module Rex11
 
       @username = username
       @password = password
+      @web_address = web_address
 
       @logging = options[:logging]
       @host = testing ? TEST_HOST : LIVE_HOST
@@ -37,7 +38,7 @@ module Rex11
       xml.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
         xml.soap :Body do
           xml.AuthenticationTokenGet(:xmlns => "http://rex11.com/webmethods/") do |xml|
-            xml.WebAddress(@host)
+            xml.WebAddress(@web_address)
             xml.UserName(@username)
             xml.Password(@password)
           end
@@ -198,9 +199,10 @@ module Rex11
     end
 
     def parse_authenticate_response(xml_response)
-      response = XmlSimple.xml_in(xml_response)
-
-      if @auth_token = response["content"]
+      response = XmlSimple.xml_in(xml_response, :ForceArray => false)
+      token_response = response["Body"]["AuthenticationTokenGetResponse"]["AuthenticationTokenGetResult"]
+      if token_response and !token_response.empty?
+        @auth_token = token_response
         true
       else
         raise "Failed Authentication due invalid username, password, or endpoint"
