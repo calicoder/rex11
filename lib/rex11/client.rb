@@ -127,6 +127,34 @@ module Rex11
       parse_pick_ticket_add_response(commit(xml_request.target!))
     end
 
+    def cancel_pick_ticket(pick_ticket_number)
+      require_auth_token
+      xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
+          xml_request.CancelPickTicket(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.PickTicketId(pick_ticket_number)
+          end
+        end
+      end
+      parse_cancel_pick_ticket(commit(xml_request.target!))
+    end
+
+    def parse_cancel_pick_ticket(xml_response)
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      response_content = response["Body"]["CancelPickTicketResponse"]["CancelPickTicketResult"]
+      error_string = parse_error(response_content)
+
+      if error_string.empty?
+        true
+      else
+        raise error_string
+      end
+
+    end
+
     def pick_ticket_by_number(pick_ticket_number)
       require_auth_token
       xml_request = Builder::XmlMarkup.new

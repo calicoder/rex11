@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <CancelPickTicketResponse xmlns="http://rex11.com/webmethods/">
+      <CancelPickTicketResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>45</ErrorCode>
+            <Severity>PickTicketError</Severity>
+            <Message>PickTicket can not be cancelled</Message>
+          </Notification>
+          <Notification>
+            <ErrorCode>45</ErrorCode>
+            <Severity>PickTicketError</Severity>
+            <Message>PickTicket does not exist</Message>
+          </Notification>
+        </Notifications>
+      </CancelPickTicketResult>
+    </CancelPickTicketResponse>
+  </soap:Body>
+</soap:Envelope>
