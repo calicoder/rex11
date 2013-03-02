@@ -19,8 +19,7 @@ module Rex11
       default_options = {
           :logging => true,
       }
-
-      options = default_options.update(options)
+      @options = default_options.update(options)
 
       @username = username
       @password = password
@@ -29,7 +28,7 @@ module Rex11
       @logging = options[:logging]
       @host = testing ? TEST_HOST : LIVE_HOST
       @path = testing ? TEST_PATH : LIVE_PATH
-      @options = options
+
     end
 
     def authenticate
@@ -191,7 +190,7 @@ module Rex11
     def commit(xml_request)
       http = Net::HTTP.new(@host, 80)
       response = http.post(@path, xml_request, {'Content-Type' => 'text/xml'})
-      #puts response.body
+      puts response.body if @options[:logging]
       response.body
     end
 
