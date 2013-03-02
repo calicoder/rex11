@@ -3,7 +3,7 @@
   <soap:Body>
     <PickTicketAdd xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
-      <newPickTicket xmlns="http://rex11.com/swpublicapi/PickTicket.xsd">
+      <PickTicket xmlns="http://rex11.com/swpublicapi/PickTicket.xsd">
         <PickTicketNumber>23022012012557</PickTicketNumber>
         <WareHouse>the_warehouse</WareHouse>
         <PaymentTerms>NET</PaymentTerms>
@@ -46,7 +46,7 @@
           <UPC xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_upc2</UPC>
           <Quantity xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">2</Quantity>
         </LineItem>
-      </newPickTicket>
+      </PickTicket>
     </PickTicketAdd>
   </soap:Body>
 </soap:Envelope>

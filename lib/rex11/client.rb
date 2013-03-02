@@ -257,9 +257,12 @@ module Rex11
         return_hash.merge!({
                                :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
                                :pick_ticket_status => pick_ticket_hash["ShipmentStatus"]["content"],
-                               :tracking_number => (tracking_number["content"] if tracking_number = pick_ticket_hash["TrackingNumber"]),
                                :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
                            })
+
+        if tracking_number = pick_ticket_hash["TrackingNumber"]["content"]
+          return_hash.merge!({:tracking_number => tracking_number})
+        end
       else
         #errors
         notifications_block["Notification"].each do |notification|
@@ -281,7 +284,8 @@ module Rex11
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
       response_content = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]
 
-      if receiving_ticket_id = response_content["ReceivingTicketId"]
+      receiving_ticket_id = response_content["ReceivingTicketId"]
+      if receiving_ticket_id and !receiving_ticket_id.empty?
         receiving_ticket_id
       else
         response_content["Notifications"]["Notification"].each do |notification|
