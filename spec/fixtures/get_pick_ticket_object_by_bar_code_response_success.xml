@@ -5,7 +5,7 @@
       <GetPickTicketObjectByBarCodeResult>
         <Notifications />
         <PickTicket>
-          <PickTicketNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_pick_ticket_number</PickTicketNumber>
+          <PickTicketNumber xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">the_pick_ticket_id</PickTicketNumber>
           <WareHouse xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">BERGEN LOGISTICS NJ</WareHouse>
           <OrderDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd">12/14/2011</OrderDate>
           <StartDate xmlns="http://rex11.com/swpublicapi/PickTicketDetails.xsd" />

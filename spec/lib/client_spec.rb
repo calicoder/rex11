@@ -42,7 +42,7 @@ describe Rex11::Client do
     end
   end
 
-  context "add_styles_for_item" do
+  context "add_style" do
     before do
       @item = {
           :style => "the_style",
@@ -59,13 +59,13 @@ describe Rex11::Client do
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.add_styles_for_item(@item)
+      @client.add_style(@item)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("style_master_product_add_request"))).and_return(xml_fixture("style_master_product_add_response_success"))
-        @client.add_styles_for_item(@item)
+        @client.add_style(@item)
       end
     end
 
@@ -73,7 +73,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return true" do
           @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_success"))
-          @client.add_styles_for_item(@item).should == true
+          @client.add_style(@item).should == true
         end
       end
 
@@ -81,14 +81,14 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("style_master_product_add_response_error"))
           lambda {
-            @client.add_styles_for_item(@item)
+            @client.add_style(@item)
           }.should raise_error("Error 31: COLOR[item 1] is not valid. Error 43: PRICE[item 1] is not valid. Error 31: COLOR[item 2] is not valid. Error 31: COLOR[item 4] is not valid. ")
         end
       end
     end
   end
 
-  context "create_pick_tickets_for_items" do
+  context "create_pick_tickets" do
     before do
       @items = [
           {:upc => "the_upc1", :quantity => 1},
@@ -109,7 +109,7 @@ describe Rex11::Client do
       }
 
       @pick_ticket_options = {
-          :pick_ticket_number => "23022012012557",
+          :pick_ticket_id => "23022012012557",
           :warehouse => "the_warehouse",
           :payment_terms => "NET",
           :use_ups_account => "1",
@@ -138,13 +138,13 @@ describe Rex11::Client do
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.create_pick_tickets_for_items(@items, @ship_to_address, @pick_ticket_options)
+      @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("pick_ticket_add_request"))).and_return(xml_fixture("pick_ticket_add_response_success"))
-        @client.create_pick_tickets_for_items(@items, @ship_to_address, @pick_ticket_options)
+        @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
       end
     end
 
@@ -152,7 +152,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return true" do
           @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_success"))
-          @client.create_pick_tickets_for_items(@items, @ship_to_address, @pick_ticket_options).should == true
+          @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options).should == true
         end
       end
 
@@ -160,7 +160,7 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("pick_ticket_add_response_error"))
           lambda {
-            @client.create_pick_tickets_for_items(@items, @ship_to_address, @pick_ticket_options)
+            @client.create_pick_tickets(@items, @ship_to_address, @pick_ticket_options)
           }.should raise_error("Error 56: PickTicket/ShipVia is not valid. Error 61: PickTicket/ShipService is not valid. Error 10: State for ShipToAddress is required for USA. ")
         end
       end
@@ -169,20 +169,20 @@ describe Rex11::Client do
 
   context "cancel pick ticket" do
     before do
-      @pick_ticket_number = "the_pick_ticket_number"
+      @pick_ticket_id = "the_pick_ticket_id"
       @client.auth_token = "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
     end
 
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("cancel_pick_ticket_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.cancel_pick_ticket(@pick_ticket_number)
+      @client.cancel_pick_ticket(@pick_ticket_id)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("cancel_pick_ticket_request"))).and_return(xml_fixture("cancel_pick_ticket_response_success"))
-        @client.cancel_pick_ticket(@pick_ticket_number)
+        @client.cancel_pick_ticket(@pick_ticket_id)
       end
     end
 
@@ -190,7 +190,7 @@ describe Rex11::Client do
       context "when success" do
         it "should return hash" do
           @client.should_receive(:commit).and_return(xml_fixture("cancel_pick_ticket_response_success"))
-          @client.cancel_pick_ticket(@pick_ticket_number).should == true
+          @client.cancel_pick_ticket(@pick_ticket_id).should == true
         end
       end
 
@@ -198,7 +198,7 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("cancel_pick_ticket_response_error"))
           lambda {
-            @client.cancel_pick_ticket(@pick_ticket_number)
+            @client.cancel_pick_ticket(@pick_ticket_id)
           }.should raise_error("Error 45: PickTicket can not be cancelled. Error 45: PickTicket does not exist. ")
         end
       end
@@ -207,20 +207,20 @@ describe Rex11::Client do
 
   context "pick_ticket_by_number" do
     before do
-      @pick_ticket_number = "the_pick_ticket_number"
+      @pick_ticket_id = "the_pick_ticket_id"
       @client.auth_token = "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
     end
 
     it "should require_auth_token" do
       @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
       @client.should_receive(:require_auth_token)
-      @client.pick_ticket_by_number(@pick_ticket_number)
+      @client.pick_ticket_by_number(@pick_ticket_id)
     end
 
     context "request" do
       it "should form correct request" do
         @client.should_receive(:commit).with(squeeze_xml(xml_fixture("get_pick_ticket_object_by_bar_code_request"))).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
-        @client.pick_ticket_by_number(@pick_ticket_number)
+        @client.pick_ticket_by_number(@pick_ticket_id)
       end
     end
 
@@ -228,8 +228,8 @@ describe Rex11::Client do
       context "when success" do
         it "should return hash" do
           @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_success"))
-          @client.pick_ticket_by_number(@pick_ticket_number).should == {
-              :pick_ticket_number => "the_pick_ticket_number",
+          @client.pick_ticket_by_number(@pick_ticket_id).should == {
+              :pick_ticket_id => "the_pick_ticket_id",
               :pick_ticket_status => "the_pick_ticket_status",
               :pick_ticket_status_code => "the_pick_ticket_status_code",
               :tracking_number => "the_tracking_number",
@@ -244,7 +244,7 @@ describe Rex11::Client do
         it "should raise error" do
           @client.should_receive(:commit).and_return(xml_fixture("get_pick_ticket_object_by_bar_code_response_error"))
           lambda {
-            @client.pick_ticket_by_number(@pick_ticket_number)
+            @client.pick_ticket_by_number(@pick_ticket_id)
           }.should raise_error("Error 83: BarCode doesn't exist. ")
         end
       end

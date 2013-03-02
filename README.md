@@ -34,7 +34,7 @@ Create style master:
         :description => "Chanel Red Skirt"
     }
 
-    client.add_styles_for_item(item)
+    client.add_style(item)
 
 Create pick ticket for items:
 
@@ -71,9 +71,9 @@ Create pick ticket for items:
                         :email => "time@magazine.com"
     }
 
-    pick_ticket_number = "23022012012557"
+    pick_ticket_id = "23022012012557"
     pick_ticket_options = {
-        :pick_ticket_number => pick_ticket_number,
+        :pick_ticket_id => pick_ticket_id,
         :warehouse => "The Warehouse",
         :payment_terms => "NET",
         :use_ups_account => "1",
@@ -95,7 +95,7 @@ Create pick ticket for items:
         }
     }
 
-    client.create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
+    client.create_pick_tickets(items, ship_to_address, pick_ticket_options)
 
 
 

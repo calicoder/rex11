@@ -3,7 +3,7 @@
   <soap:Body>
     <CancelPickTicket xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
-      <PickTicketId>the_pick_ticket_number</PickTicketId>
+      <PickTicketId>the_pick_ticket_id</PickTicketId>
     </CancelPickTicket>
   </soap:Body>
 </soap:Envelope>

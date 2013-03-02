@@ -1,11 +1,10 @@
 require 'rex11'
 
-USERNAME = "xxx"
-PASSWORD = "xxx"
-WEB_ADDRESS = "xxx"
-TESTING = true
+USERNAME = "yoram"
+PASSWORD = "not_set"
+WEB_ADDRESS = "www.yoramtestaccount.atworkweb.com"
 
-client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS, TESTING, :logging => false)
+TESTING = true
 
 item = {
     :style => "ABC123",
@@ -57,9 +56,9 @@ ship_to_address = {:first_name => "Joe",
                     :email => "time@magazine.com"
 }
 
-pick_ticket_number = "23022012012557"
+pick_ticket_id = "23022012012557"
 pick_ticket_options = {
-    :pick_ticket_number => pick_ticket_number,
+    :pick_ticket_id => pick_ticket_id,
     :warehouse => "BERGEN LOGISTICS NJ",
     :payment_terms => "NET",
     :use_ups_account => "0",
@@ -96,27 +95,28 @@ receiving_ticket_options = {
 }
 
 puts "Authenticating...."
+client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS, TESTING, :logging => false)
 result = client.authenticate
 puts "Authenticated: #{result}\n\n"
 
 puts "Creating Style Master...."
-result = client.add_styles_for_item(item)
+result = client.add_style(item)
 puts "Added Style Master: #{result}"
 
 puts "Creating Style Master...."
-result = client.add_styles_for_item(item2)
+result = client.add_style(item2)
 puts "Added Style Master: #{result}\n\n"
 
 puts "Creating Pick Tickets..."
-response = client.create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
+response = client.create_pick_tickets(items, ship_to_address, pick_ticket_options)
 puts "Created Pick Tickets: #{response}\n\n"
 
 puts "Canceling Pick Ticket..."
-response = client.cancel_pick_ticket(pick_ticket_number)
+response = client.cancel_pick_ticket(pick_ticket_id)
 puts "Canceled Pick Ticket: #{response}\n\n"
 
 puts "Getting Pick Tickets by number..."
-response = client.pick_ticket_by_number(pick_ticket_number)
+response = client.pick_ticket_by_number(pick_ticket_id)
 puts "Completed Pick Tickets by number: #{response}\n\n"
 
 puts "Creating Receiving Ticket..."

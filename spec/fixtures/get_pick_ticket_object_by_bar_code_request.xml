@@ -3,7 +3,7 @@
   <soap:Body>
     <GetPickTicketObjectByBarCode xmlns="http://rex11.com/webmethods/">
       <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
-      <ptbarcode>the_pick_ticket_number</ptbarcode>
+      <ptbarcode>the_pick_ticket_id</ptbarcode>
     </GetPickTicketObjectByBarCode>
   </soap:Body>
 </soap:Envelope>
