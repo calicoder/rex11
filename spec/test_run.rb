@@ -1,8 +1,10 @@
 require 'rex11'
 
-client = Rex11::Client.new("username", "password")
-#puts client.authenticate
-client.auth_token = "abc"
+USERNAME = "xx"
+PASSWORD = "xx"
+WEB_ADDRESS = "xx"
+
+client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS)
 
 item = {
     :style => "ABC123",
@@ -12,8 +14,14 @@ item = {
     :color => "Black",
     :description => "Chanel Red Skirt"
 }
-
-#client.add_styles_for_item(item)
+item2 = {
+    :style => "DEF123",
+    :upc => "DEF123",
+    :size => "LARGE",
+    :price => "100.0",
+    :color => "Purple",
+    :description => "Chanel Red Blouse"
+}
 
 items = [
     {:style => "ABC123",
@@ -51,13 +59,13 @@ ship_to_address = {:first_name => "Joe",
 pick_ticket_number = "23022012012557"
 pick_ticket_options = {
     :pick_ticket_number => pick_ticket_number,
-    :warehouse => "The Warehouse",
+    :warehouse => "BERGEN LOGISTICS NJ",
     :payment_terms => "NET",
-    :use_ups_account => "1",
-    :ship_via_account_number => "1AB345",
+    :use_ups_account => "0",
+    #:ship_via_account_number => "1AB345",
     :ship_via => "UPS",
     :ship_service => "UPS GROUND - Commercial",
-    :billing_option => "PREPAID",
+    :billing_option => "THIRD PARTY",
     :bill_to_address => {
         :first_name => "Jane",
         :last_name => "Smith",
@@ -71,9 +79,6 @@ pick_ticket_options = {
         :email => "net@netaporter.com"
     }
 }
-
-#client.create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
-
 receiving_ticket_options = {
     :warehouse => "BERGEN LOGISTICS NJ",
     :carrier => "the_carrier",
@@ -89,8 +94,26 @@ receiving_ticket_options = {
     }
 }
 
+puts "Authenticating...."
+result = client.authenticate
+puts "Authenticated: #{result}\n\n"
 
-#client.pick_ticket_by_number(pick_ticket_number)
-#client.create_receiving_ticket_for_items(items, receiving_ticket_options)
+puts "Creating Style Master...."
+result = client.add_styles_for_item(item)
+puts "Added Style Master: #{result}"
 
+puts "Creating Style Master...."
+result = client.add_styles_for_item(item2)
+puts "Added Style Master: #{result}\n\n"
 
+puts "Creating Pick Tickets..."
+response = client.create_pick_tickets_for_items(items, ship_to_address, pick_ticket_options)
+puts "Created Pick Tickets: #{response}\n\n"
+
+puts "Getting Pick Tickets by number..."
+response = client.pick_ticket_by_number(pick_ticket_number)
+puts "Completed Pick Tickets by number: #{response}\n\n"
+
+puts "Creating Receiving Ticket..."
+response = client.create_receiving_ticket(items, receiving_ticket_options)
+puts "Created Receiving Ticket: #{response}"
