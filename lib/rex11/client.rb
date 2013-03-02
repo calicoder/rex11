@@ -200,9 +200,9 @@ module Rex11
 
     def parse_authenticate_response(xml_response)
       response = XmlSimple.xml_in(xml_response, :ForceArray => false)
-      token_response = response["Body"]["AuthenticationTokenGetResponse"]["AuthenticationTokenGetResult"]
-      if token_response and !token_response.empty?
-        @auth_token = token_response
+      response_content = response["Body"]["AuthenticationTokenGetResponse"]["AuthenticationTokenGetResult"]
+      if response_content and !response_content.empty?
+        @auth_token = response_content
         true
       else
         raise "Failed Authentication due invalid username, password, or endpoint"
@@ -246,10 +246,8 @@ module Rex11
                                :shipping_charge => pick_ticket_hash["FreightCharge"]["content"]
                            })
 
-        if tracking_number = pick_ticket_hash["TrackingNumber"]["content"]
-          return_hash.merge!({:tracking_number => tracking_number})
-        end
-        return_hash
+        tracking_number = pick_ticket_hash["TrackingNumber"]
+        return_hash.merge!({:tracking_number => tracking_number ? tracking_number["content"] : nil})
       else
         error_string = parse_error(response_content)
         raise error_string unless error_string.empty?
