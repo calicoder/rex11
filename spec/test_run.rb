@@ -1,8 +1,8 @@
 require 'rex11'
 
-USERNAME = "xx"
-PASSWORD = "xx"
-WEB_ADDRESS = "xx"
+USERNAME = "yoram"
+PASSWORD = "not_set"
+WEB_ADDRESS = "www.yoramtestaccount.atworkweb.com"
 
 client = Rex11::Client.new(USERNAME, PASSWORD, WEB_ADDRESS)
 

@@ -244,16 +244,12 @@ module Rex11
     end
 
     def parse_get_pick_ticket_object_by_bar_code(xml_response)
-      error_string = ""
       return_hash = {}
-
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
-      notifications_block = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["Notifications"]
+      response_content = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]
 
-
-      if notifications_block.empty?
-        #no errors
-        pick_ticket_hash = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]["PickTicket"]
+      pick_ticket_hash = response_content["PickTicket"]
+      if pick_ticket_hash and !pick_ticket_hash.empty?
         return_hash.merge!({
                                :pick_ticket_number => pick_ticket_hash["PickTicketNumber"]["content"],
                                :pick_ticket_status => pick_ticket_hash["ShipmentStatus"]["content"],
@@ -263,24 +259,14 @@ module Rex11
         if tracking_number = pick_ticket_hash["TrackingNumber"]["content"]
           return_hash.merge!({:tracking_number => tracking_number})
         end
-      else
-        #errors
-        notifications_block["Notification"].each do |notification|
-          if notification["ErrorCode"] != "0"
-            error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
-          end
-        end
-      end
-
-      if error_string.empty?
         return_hash
       else
-        raise error_string
+        error_string = parse_error(response_content)
+        raise error_string unless error_string.empty?
       end
     end
 
     def parse_receiving_ticket_add_response(xml_response)
-      error_string = ""
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
       response_content = response["Body"]["ReceivingTicketAddResponse"]["ReceivingTicketAddResult"]
 
@@ -288,13 +274,19 @@ module Rex11
       if receiving_ticket_id and !receiving_ticket_id.empty?
         receiving_ticket_id
       else
-        response_content["Notifications"]["Notification"].each do |notification|
-          if notification["ErrorCode"] != "0"
-            error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
-          end
-        end
+        error_string = parse_error(response_content)
         raise error_string unless error_string.empty?
       end
+    end
+
+    def parse_error(response_content)
+      error_string = ""
+      response_content["Notifications"]["Notification"].each do |notification|
+        if notification["ErrorCode"] != "0"
+          error_string += "Error " + notification["ErrorCode"] + ": " + notification["Message"] + ". "
+        end
+      end
+      error_string
     end
   end
 end
