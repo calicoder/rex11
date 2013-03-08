@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <GetReceivingTicketObjectByTicketNoResponse xmlns="http://rex11.com/webmethods/">
+      <GetReceivingTicketObjectByTicketNoResult>
+        <Notifications>
+          <Notification>
+            <ErrorCode>41</ErrorCode>
+            <Severity>InvalidAsnError</Severity>
+            <Message>Invalid ASN Ticket number</Message>
+          </Notification>
+        </Notifications>
+      </GetReceivingTicketObjectByTicketNoResult>
+    </GetReceivingTicketObjectByTicketNoResponse>
+  </soap:Body>
+</soap:Envelope>

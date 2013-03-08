@@ -214,6 +214,21 @@ module Rex11
       parse_receiving_ticket_add_response(commit(xml_request.target!))
     end
 
+    def receiving_ticket_by_receiving_ticket_id(receiving_ticket_id)
+      require_auth_token
+      xml_request = Builder::XmlMarkup.new
+      xml_request.instruct!
+      xml_request.soap :Envelope, :"xmlns:soap" => "http://schemas.xmlsoap.org/soap/envelope/", :"xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", :"xmlns:xsd" => "http://www.w3.org/2001/XMLSchema" do
+        xml_request.soap :Body do
+          xml_request.GetReceivingTicketObjectByTicketNo(:xmlns => "http://rex11.com/webmethods/") do |xml_request|
+            xml_request.AuthenticationString(@auth_token)
+            xml_request.AsnTicketNumber(receiving_ticket_id)
+          end
+        end
+      end
+      parse_get_receiving_ticket_object_by_ticket_number(commit(xml_request.target!))
+    end
+
     private
     def commit(xml_request)
       http = Net::HTTP.new(@host, 80)
@@ -262,19 +277,18 @@ module Rex11
     end
 
     def parse_get_pick_ticket_object_by_bar_code(xml_response)
-      return_hash = {}
       response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
       response_content = response["Body"]["GetPickTicketObjectByBarCodeResponse"]["GetPickTicketObjectByBarCodeResult"]
 
       pick_ticket_hash = response_content["PickTicket"]
       if pick_ticket_hash and !pick_ticket_hash.empty?
-        return_hash.merge!({
-                               :pick_ticket_id => (value = pick_ticket_hash["PickTicketNumber"]) ? value["content"] : nil,
-                               :pick_ticket_status => (value = pick_ticket_hash["ShipmentStatus"]) ? value["content"] : nil,
-                               :pick_ticket_status_code => (value = pick_ticket_hash["ShipmentStatusCode"]) ? value["content"] : nil,
-                               :shipping_charge => (value = pick_ticket_hash["FreightCharge"]) ? value["content"] : nil,
-                               :tracking_number => (tracking_number = pick_ticket_hash["TrackingNumber"]) ? tracking_number["content"] : nil
-                           })
+        return_hash = {
+            :pick_ticket_id => (value = pick_ticket_hash["PickTicketNumber"]) ? value["content"] : nil,
+            :pick_ticket_status => (value = pick_ticket_hash["ShipmentStatus"]) ? value["content"] : nil,
+            :pick_ticket_status_code => (value = pick_ticket_hash["ShipmentStatusCode"]) ? value["content"] : nil,
+            :shipping_charge => (value = pick_ticket_hash["FreightCharge"]) ? value["content"] : nil,
+            :tracking_number => (tracking_number = pick_ticket_hash["TrackingNumber"]) ? tracking_number["content"] : nil
+        }
       else
         error_string = parse_error(response_content)
         raise error_string unless error_string.empty?
@@ -288,6 +302,33 @@ module Rex11
       receiving_ticket_id = response_content["ReceivingTicketId"]
       if receiving_ticket_id and !receiving_ticket_id.empty?
         {:receiving_ticket_id => receiving_ticket_id}
+      else
+        error_string = parse_error(response_content)
+        raise error_string unless error_string.empty?
+      end
+    end
+
+    def parse_get_receiving_ticket_object_by_ticket_number(xml_response)
+      response = XmlSimple.xml_in(xml_response, :ForceArray => ["Notification"])
+      response_content = response["Body"]["GetReceivingTicketObjectByTicketNoResponse"]["GetReceivingTicketObjectByTicketNoResult"]
+
+      receiving_ticket_hash = response_content["ReceivingTicketByTicketNo"]
+      if receiving_ticket_hash and !receiving_ticket_hash.empty?
+
+        items = []
+        receiving_ticket_hash["ReceivingTicket"]["Shipmentitemslist"].each do |item|
+          item_hash = {
+              :style => item["Style"]["content"],
+              :upc => item["UPC"]["content"]
+          }
+          items << item_hash
+        end
+
+        return_hash = {
+            :receiving_ticket_status => (value = receiving_ticket_hash["ReceivingTicket"]["ReceivingStatus"]) ? value["content"] : nil,
+            :receiving_ticket_status_code => (value = receiving_ticket_hash["ReceivingTicket"]["ReceivingStatusCode"]) ? value["content"] : nil,
+            :items => items
+        }
       else
         error_string = parse_error(response_content)
         raise error_string unless error_string.empty?

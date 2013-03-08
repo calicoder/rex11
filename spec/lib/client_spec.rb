@@ -324,6 +324,88 @@ describe Rex11::Client do
     end
   end
 
+  context "receiving_ticket_by_receiving_ticket_id" do
+    before do
+      @receiving_ticket_id = "the_receiving_ticket_id"
+      @items = [{:style => "the_style1",
+                 :upc => "the_upc1",
+                 :size => "the_size1",
+                 :color => "the_color1",
+                 :description => "the_description1",
+                 :quantity => "the_quantity1",
+                 :comments => "the_comments1",
+                 :shipment_type => "the_shipment_type1"
+                },
+                {:style => "the_style2",
+                 :upc => "the_upc2",
+                 :size => "the_size2",
+                 :color => "the_color2",
+                 :description => "the_description2",
+                 :quantity => "the_quantity2",
+                 :comments => "the_comments2",
+                 :shipment_type => "the_shipment_type2"
+                }
+      ]
+
+      @receiving_ticket_options = {
+          :warehouse => "the_warehouse",
+          :carrier => "the_carrier",
+          :memo => "the_memo",
+          :supplier => {:company_name => "the_supplier_company_name",
+                        :address1 => "the_supplier_address1",
+                        :address2 => "the_supplier_address2",
+                        :city => "the_supplier_city",
+                        :state => "the_supplier_state",
+                        :zip => "the_supplier_zip",
+                        :country => "the_supplier_country",
+                        :phone => "the_supplier_phone",
+                        :email => "the_supplier_email"
+          }
+      }
+
+      @client.auth_token = "4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo="
+    end
+
+    it "should require_auth_token" do
+      @client.should_receive(:commit).and_return(xml_fixture("get_receiving_ticket_object_by_ticket_number_response_success"))
+      @client.should_receive(:require_auth_token)
+      @client.receiving_ticket_by_receiving_ticket_id(@receiving_ticket_id)
+    end
+
+    context "request" do
+      it "should form correct request" do
+        @client.should_receive(:commit).with(squeeze_xml(xml_fixture("get_receiving_ticket_object_by_ticket_number_request"))).and_return(xml_fixture("get_receiving_ticket_object_by_ticket_number_response_success"))
+        @client.receiving_ticket_by_receiving_ticket_id(@receiving_ticket_id)
+      end
+    end
+
+    context "response" do
+      context "when success" do
+        it "should return the receiving ticket id" do
+          @client.should_receive(:commit).and_return(xml_fixture("get_receiving_ticket_object_by_ticket_number_response_success"))
+
+          @client.receiving_ticket_by_receiving_ticket_id(@receiving_ticket_id).should == {
+              :receiving_ticket_status=>"the_receiving_status1",
+              :receiving_ticket_status_code=>"the_receiving_status_code1",
+              :items => [
+                  {:style=>"the_style1", :upc=>"the_upc1"},
+                  {:style=>"the_style2", :upc=>"the_upc2"}
+              ]
+          }
+        end
+      end
+
+      context "when error" do
+        it "should raise error" do
+          @client.should_receive(:commit).and_return(xml_fixture("get_receiving_ticket_object_by_ticket_number_response_error"))
+          lambda {
+            @client.receiving_ticket_by_receiving_ticket_id(@receiving_ticket_id)
+          }.should raise_error("Error 41: Invalid ASN Ticket number. ")
+        end
+      end
+    end
+  end
+
   context "require_auth_token" do
     it "should raise error if auth_token is not set" do
       lambda {

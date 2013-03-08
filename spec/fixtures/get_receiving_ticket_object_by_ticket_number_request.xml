@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<soap:Body>
+  <GetReceivingTicketObjectByTicketNo xmlns="http://rex11.com/webmethods/">
+    <AuthenticationString>4vxVebc3D1zwsXjH9fkFpgpOhewauJbVu25WXjQ1gOo=</AuthenticationString>
+    <AsnTicketNumber>the_receiving_ticket_id</AsnTicketNumber>
+  </GetReceivingTicketObjectByTicketNo>
+</soap:Body>
+</soap:Envelope>

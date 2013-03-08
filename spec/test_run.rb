@@ -122,4 +122,9 @@ puts "Completed Pick Tickets by number: #{response}\n\n"
 
 puts "Creating Receiving Ticket.."
 response = client.create_receiving_ticket(items, receiving_ticket_options)
+receiving_ticket_id = response["receiving_ticket_id"]
 puts "Created Receiving Ticket: #{response}"
+
+puts "Getting Receiving Ticket By Receiving Ticket ID.."
+response = client.receiving_ticket_by_receiving_ticket_id(receiving_ticket_id)
+puts "Completed Receiving Ticket By Receiving Ticket ID: #{response}"
