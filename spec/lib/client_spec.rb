@@ -388,8 +388,24 @@ describe Rex11::Client do
               :receiving_ticket_status=>"the_receiving_status1",
               :receiving_ticket_status_code=>"the_receiving_status_code1",
               :items => [
-                  {:style=>"the_style1", :upc=>"the_upc1"},
-                  {:style=>"the_style2", :upc=>"the_upc2"}
+                  {:style=>"the_style1",
+                   :upc=>"the_upc1",
+                   :size => "the_size1",
+                   :color => "the_color1",
+                   :description => "the_description1",
+                   :quantity => "the_quantity1",
+                   :comments => "the_comments1",
+                   :shipment_type => "the_shipment_type1"
+                  },
+                  {:style=>"the_style2",
+                   :upc=>"the_upc2",
+                   :size => "the_size2",
+                   :color => "the_color2",
+                   :description => "the_description2",
+                   :quantity => "the_quantity2",
+                   :comments => "the_comments2",
+                   :shipment_type => "the_shipment_type2"
+                  }
               ]
           }
         end

@@ -319,7 +319,13 @@ module Rex11
         receiving_ticket_hash["ReceivingTicket"]["Shipmentitemslist"].each do |item|
           item_hash = {
               :style => item["Style"]["content"],
-              :upc => item["UPC"]["content"]
+              :upc => item["UPC"]["content"],
+              :size => item["Size"]["content"],
+              :color => item["Color"]["content"],
+              :description => item["ProductDescription"]["content"],
+              :quantity => item["ExpectedQuantity"]["content"],
+              :comments => item["Comments"]["content"],
+              :shipment_type => item["ShipmentType"]["content"]
           }
           items << item_hash
         end
