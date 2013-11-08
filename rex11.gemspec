@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "rex11"
   gem.version       = Rex11::VERSION
   gem.authors       = ["Andy Shin"]
-  gem.email         = ["andrewkshin@gmail.com"]
+  gem.email         = ["incognitocode@gmail.com"]
   gem.description   = "Ruby Library for REX11 Warehouse Management System"
   gem.summary       = "This is a library for interfacing with REX11 Warehouse Management System"
   gem.homepage      = "https://www.vaunte.com"
